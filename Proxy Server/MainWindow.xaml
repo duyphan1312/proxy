@@ -1,0 +1,192 @@
+﻿<Window x:Class="Proxy_Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Proxy_Server"
+        mc:Ignorable="d"
+        Title="PROXY SERVER" Height="720" Width="1280"  WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ConnectButton">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                      ShadowDepth="6"
+                      Direction="135"
+                      Color="Maroon"
+                      Opacity="0.35"
+                      BlurRadius="0.0" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="connectBorder" CornerRadius="30" Background="White" BorderBrush="pink" BorderThickness="10" >
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="connectBorder" Value="#FFC4E5F6"/>
+                                <Setter Property="BorderBrush" TargetName="connectBorder" Value="#FF2C628B"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="connectBorder"  Value="#FFC4E5F6"/>
+                                <Setter Property="BorderBrush" TargetName="connectBorder" Value="#FF2C628B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="SettingBtn">
+            <Setter Property="Background" Value="pink" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                      ShadowDepth="6"
+                      Direction="135"
+                      Color="Maroon"
+                      Opacity="0.35"
+                      BlurRadius="0.0" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="settingbd" CornerRadius="10" Background="#2196F3" BorderBrush="#fff" BorderThickness="5" Margin="4">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Button" x:Key="CloseBtn">
+            <Setter Property="Background" Value="#FF5722" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                          ShadowDepth="6"
+                          Direction="135"
+                          Color="Maroon"
+                          Opacity="0.35"
+                          BlurRadius="0.0" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="settingbd" CornerRadius="10" Background="#FF5722" BorderBrush="#fff" BorderThickness="5" Margin="4">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Opacity=".8" ImageSource="Assets/Image/Background.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Border>
+                <Image Width="1000" Height="200" Source="Assets/Image/Title.png"/>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Name="SchoolButton" Width="300" Height="300" Style="{StaticResource ConnectButton}" >
+                <StackPanel Orientation="Vertical">
+                    <Image>
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/School-wifi.png" />
+                        </Image.Source>
+                    </Image>
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" Name="HomeButton" Width="300" Height="300" Style="{StaticResource ConnectButton}">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="Assets/Image/Home-wifi.png"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="197*"/>
+                <ColumnDefinition Width="439*"/>
+            </Grid.ColumnDefinitions>
+            <Button Width="140" Height="70"  Grid.Row="0" Grid.Column="0"
+                    Style="{StaticResource CloseBtn}" HorizontalAlignment="Left" Margin="30,18,0,18" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="30"
+                       Height="30"
+                       Margin="10" Source="Assets/Image/baseline_logout_white_18dp.png"/>
+
+                    <TextBlock FontSize="20"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       Margin="5 12 12 12" Text="EXIT"/>
+                </StackPanel>
+            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+                <Button Name="SettingButton" Width="300" Height="70" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SettingBtn}" Margin="9,0,50,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Image Width="30"
+                       Height="30"
+                       Margin="10">
+                            <Image.Source>
+                                <BitmapImage DecodePixelWidth="30" UriSource="Assets/Image/baseline_settings_white_18dp.png" />
+                            </Image.Source>
+                        </Image>
+
+                        <TextBlock FontSize="20"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       Margin="12" Text="SETTING"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
