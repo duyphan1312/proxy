@@ -42,7 +42,7 @@
                 FontSize="30"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top">
-                ALO ALO
+                PROXY SERVER
             </TextBlock>
 
             <TextBlock
