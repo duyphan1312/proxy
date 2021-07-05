@@ -58,12 +58,12 @@
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Content="Import Setting" Width="120" Height="35" Margin="5,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold">
                     </Button>
-                    <Button Content="Export Setting" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" IsCancel="True" FontSize="14" FontWeight="Bold">
+                    <Button Content="Export Setting" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" IsCancel="True" FontSize="14" FontWeight="Bold" Click="ExportButton_Click">
                     </Button>
                 </StackPanel>
               
                 <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Content="Save" Width="120" Height="35" Margin="5,30,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="Button_Click">
+                    <Button Content="Save" Width="120" Height="35" Margin="5,30,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click">
                     </Button>
                     <Button Content="Cancel" Width="120" Height="35" Margin="20,30,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="CancelButton" IsCancel="True" FontSize="14" FontWeight="Bold">
                     </Button>
