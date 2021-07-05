@@ -36,7 +36,7 @@ namespace Proxy_Server
             if (!CheckExistFile())
             {
                 //File không tồn tại
-                MessageBox.Show("File không tồn tại");
+                //MessageBox.Show("File không tồn tại");
             }
             else
             {
