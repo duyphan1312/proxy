@@ -15,6 +15,7 @@ using System.IO;
 using CsvHelper;
 using System.Globalization;
 using CsvHelper.Configuration;
+using Microsoft.Win32;
 
 namespace Proxy_Server
 {
@@ -35,14 +36,22 @@ namespace Proxy_Server
         {
             if (!CheckExistFile())
             {
-                //File không tồn tại
-                //MessageBox.Show("File không tồn tại");
+                //File csv không tồn tại, tạo một File csv chứa header
+                var file = @"ProxySetting.csv";
+
+                using (var stream = File.CreateText(file))
+                {
+                    string first = "ProxyServer";
+                    string second = "ListURL";
+                    string csvRow = string.Format("{0},{1}", first, second);
+
+                    stream.WriteLine(csvRow);
+                }
             }
             else
             {
                 if (IsTextFileEmpty())
                 {
-
                     //File csv có dữ liệu
                     var streamReader = File.OpenText("ProxySetting.csv");
 
@@ -57,10 +66,6 @@ namespace Proxy_Server
                         txtURLList.Text = urlList;
 
                     }
-                }
-                else
-                {
-                    //File csv không có dữ liệu
                 }
             }
         }
@@ -77,19 +82,56 @@ namespace Proxy_Server
 
         private bool IsTextFileEmpty()
         {
-            var info = new FileInfo("ProxySetting.csv");
+            var streamReader = File.OpenText("ProxySetting.csv");
 
-            if (info.Length == 0)
+            var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
+
+            while (csvReader.Read())
             {
-                return false;
+                var proxyServer = csvReader.GetField(0);
+                if (proxyServer != "" || !(String.IsNullOrEmpty(proxyServer)))
+                {
+                    return true;
+                }              
             }
-            else
+
+            return false;
+        }
+
+
+        private void ExportButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+
+            string filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
+
+            save.Filter = filter;
+
+            const string header = "ProxyServer,URLList";
+
+            string proxyServer = txtProxyServer.Text;
+            string urlList = txtURLList.Text;
+
+            string value = proxyServer + "," + urlList;
+
+            StreamWriter writer = null;
+            
+
+            if (save.ShowDialog() == true)
             {
-                return true;
+                filter = save.FileName;
+
+                writer = new StreamWriter(filter);
+
+                writer.WriteLine(header);
+
+                writer.WriteLine(value);
+
+                writer.Close();
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             String path = @"ProxySetting.csv";
             List<String> lines = new List<String>();
