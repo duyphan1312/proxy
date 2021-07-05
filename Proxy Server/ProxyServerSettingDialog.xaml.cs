@@ -34,68 +34,21 @@ namespace Proxy_Server
 
         private void ProxyServerSettingDialog_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!CheckExistFile())
+            var file = Constant.SETTING_PATH;
+            if (File.Exists(file) == false)
             {
-                //File csv không tồn tại, tạo một File csv chứa header
-                var file = @"ProxySetting.csv";
-
-                using (var stream = File.CreateText(file))
-                {
-                    string first = "ProxyServer";
-                    string second = "ListURL";
-                    string csvRow = string.Format("{0},{1}", first, second);
-
-                    stream.WriteLine(csvRow);
-                }
-            }
-            else
-            {
-                if (IsTextFileEmpty())
-                {
-                    //File csv có dữ liệu
-                    var streamReader = File.OpenText("ProxySetting.csv");
-
-                    var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
-
-                    while (csvReader.Read())
-                    {
-                        var proxyServer = csvReader.GetField(0);
-                        txtProxyServer.Text = proxyServer;
-
-                        var urlList = csvReader.GetField(1);
-                        txtURLList.Text = urlList;
-
-                    }
-                }
-            }
-        }
-
-        private bool CheckExistFile()
-        {
-            if (File.Exists("ProxySetting.csv"))
-            {
-                return true;
+                StreamWriter stream = File.CreateText(file);
+                stream.Close();
             }
 
-            return false;
-        }
-
-        private bool IsTextFileEmpty()
-        {
-            var streamReader = File.OpenText("ProxySetting.csv");
-
-            var csvReader = new CsvReader(streamReader, CultureInfo.CurrentCulture);
-
-            while (csvReader.Read())
+            using (var reader = new StreamReader(file))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                var proxyServer = csvReader.GetField(0);
-                if (proxyServer != "" || !(String.IsNullOrEmpty(proxyServer)))
-                {
-                    return true;
-                }              
+                var records = csv.GetRecords<ProxySetting>();
+                ProxySetting setting = records.FirstOrDefault();
+                txtProxyServer.Text = setting.ProxyServer;
+                txtURLList.Text = setting.DomainList; ;
             }
-
-            return false;
         }
 
 
@@ -133,35 +86,22 @@ namespace Proxy_Server
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            String path = @"ProxySetting.csv";
-            List<String> lines = new List<String>();
-
-            if (File.Exists(path))
+            //File csv không tồn tại, tạo một File csv chứa header
+            var file = Constant.SETTING_PATH;
+            var writer = new StreamWriter(file);
+            var csv = new CsvWriter(writer, CultureInfo.CurrentCulture);
             {
-                using (StreamReader reader = new StreamReader(path))
+                csv.WriteHeader<ProxySetting>();
+                csv.NextRecord();
+                ProxySetting newSetting = new ProxySetting()
                 {
-                    String line;
-
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        if (!line.Contains("ProxyServer"))
-                        {
-                            String[] split = line.Split(',');
-                            split[0] = txtProxyServer.Text;
-                            split[1] = txtURLList.Text;
-                            line = String.Join(",", split);
-                        }
-
-                        lines.Add(line);
-                    }
-                }
-
-                using (StreamWriter writer = new StreamWriter(path, false))
-                {
-                    foreach (String line in lines)
-                        writer.WriteLine(line);
-                }
+                    DomainList = txtURLList.Text,
+                    ProxyServer = txtProxyServer.Text
+                };
+                csv.WriteRecord(newSetting);
+                csv.NextRecord();
             }
+            writer.Close();
         }
     }
 }
