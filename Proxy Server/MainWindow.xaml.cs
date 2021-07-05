@@ -24,5 +24,14 @@ namespace Proxy_Server
         {
             InitializeComponent();
         }
+
+        private void SettingButton_Click(object sender, RoutedEventArgs e)
+        {
+            var setting = new ProxyServerSettingDialog();
+
+            setting.Owner = this;
+
+            setting.ShowDialog();
+        }
     }
 }
