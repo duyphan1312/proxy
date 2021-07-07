@@ -66,28 +66,30 @@ namespace Proxy_Server
             string filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
 
             save.Filter = filter;
-            save.InitialDirectory = @"D:\";
-            save.FileName = "ProxyServer";
-
-            const string header = "ProxyServer,URLList";
-
-            string proxyServer = txtProxyServer.Text;
-            string urlList = txtURLList.Text;
-
-            string value = proxyServer + "," + urlList;
-
-            StreamWriter writer = null;
+            save.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            save.FileName = Constant.FILENAME_EXPORT;
             
 
             if (save.ShowDialog() == true)
             {
                 filter = save.FileName;
 
-                writer = new StreamWriter(filter);
+                var writer = new StreamWriter(save.FileName);
 
-                writer.WriteLine(header);
+                var csv = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                {
+                    csv.WriteHeader<ProxySetting>();
+                    csv.NextRecord();
 
-                writer.WriteLine(value);
+                    ProxySetting newSetting = new ProxySetting()
+                    {
+                        URLList = txtURLList.Text,
+                        ProxyServer = txtProxyServer.Text
+                    };
+
+                    csv.WriteRecord(newSetting);
+                    csv.NextRecord();
+                }
 
                 writer.Close();
             }
@@ -97,13 +99,13 @@ namespace Proxy_Server
         {
             if (CheckInputProxyServer(txtProxyServer.Text) == false)
             {
-                MessageBox.Show("Giá trị của Proxy Server lỗi!", "Thông báo", MessageBoxButton.OK);
+                MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
                 if (CheckInputURLList(txtURLList.Text) == false)
                 {
-                    MessageBox.Show("Giá trị của URL List lỗi!", "Thông báo", MessageBoxButton.OK);
+                    MessageBox.Show("" + Constant.DISPLAY_ERROR_URLLIST, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
@@ -151,13 +153,13 @@ namespace Proxy_Server
                 {
                     if (CheckInputProxyServer(setting.ProxyServer) == false)
                     {
-                        MessageBox.Show("Giá trị của Proxy Server lỗi!", "Thông báo", MessageBoxButton.OK);
+                        MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     else
                     {
                         if (CheckInputURLList(setting.URLList) == false)
                         {
-                            MessageBox.Show("Giá trị của URL List lỗi!", "Thông báo", MessageBoxButton.OK);
+                            MessageBox.Show("" + Constant.DISPLAY_ERROR_URLLIST, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         else
                         {
@@ -189,7 +191,7 @@ namespace Proxy_Server
                 }
                 else
                 {
-                    MessageBox.Show("File không chứa giá trị Proxy Server và URL List!", "Thông báo", MessageBoxButton.OK);
+                    MessageBox.Show("" + Constant.DISPLAY_ERROR_VALUE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                     txtProxyServer.Text = "";
                     txtURLList.Text = "";
                 }
