@@ -133,35 +133,33 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Image\Background.png" />
     <Resource Include="Assets\Image\baseline_logout_white_18dp.png" />
     <Resource Include="Assets\Image\baseline_perm_data_setting_white_18dp.png" />
     <Resource Include="Assets\Image\baseline_settings_white_18dp.png" />
     <Resource Include="Assets\Image\baseline_wifi_white_18dp.png" />
     <Resource Include="Assets\Image\Cancel.png" />
-    <Resource Include="Assets\Image\Connected.png" />
     <Resource Include="Assets\Image\Disconnect.png" />
     <Resource Include="Assets\Image\gradient_BG.png" />
-    <Resource Include="Assets\Image\Home-wifi.png" />
     <Resource Include="Assets\Image\HomeWifi.png" />
     <Resource Include="Assets\Image\OK_Btn.png" />
     <Resource Include="Assets\Image\Reset.png" />
     <Resource Include="Assets\Image\Reset_press.png" />
-    <Resource Include="Assets\Image\School-wifi.png" />
     <Resource Include="Assets\Image\SchoolWifi.png" />
-    <Resource Include="Assets\Image\Setting_wifi.png" />
-    <Resource Include="Assets\Image\Title.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Image\41KH+qxOmXL.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Image\exit.jpg" />
     <Resource Include="Assets\Image\setting.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Image\background.jpg" />
     <Resource Include="Assets\Image\home.jpg" />
     <Resource Include="Assets\Image\school.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Image\title.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Image\connected.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

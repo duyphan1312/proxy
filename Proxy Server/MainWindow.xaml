@@ -12,29 +12,29 @@
         <Style TargetType="Button" x:Key="ConnectButton">
             <Setter Property="Background" Value="White" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="Effect">
+            <!--<Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect
                       ShadowDepth="6"
                       Direction="135"
                       Color="Maroon"
-                      Opacity="0.35"
+                      Opacity="0.5"
                       BlurRadius="0.0" />
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="connectBorder" CornerRadius="30" Background="White" BorderBrush="pink" BorderThickness="10" >
+                        <Border x:Name="connectBorder" CornerRadius="20" Background="White" BorderBrush="Pink" BorderThickness="5" >
                             <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="connectBorder" Value="#FFC4E5F6"/>
+                                <!--<Setter Property="Background" TargetName="connectBorder" Value="#FFC4E5F6"/>-->
                                 <Setter Property="BorderBrush" TargetName="connectBorder" Value="#FF2C628B"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" TargetName="connectBorder"  Value="#FFC4E5F6"/>
+                                <!--<Setter Property="Background" TargetName="connectBorder"  Value="#FFC4E5F6"/>-->
                                 <Setter Property="BorderBrush" TargetName="connectBorder" Value="#FF2C628B"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -46,7 +46,7 @@
         <Style TargetType="Button" x:Key="SettingBtn">
             <Setter Property="Background" Value="pink" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="Effect">
+            <!--<Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect
                       ShadowDepth="6"
@@ -55,7 +55,7 @@
                       Opacity="0.35"
                       BlurRadius="0.0" />
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -64,12 +64,12 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
-                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
+                                <!--<Setter Property="Background" TargetName="settingbd" Value="#FF2C628B"/>-->
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF5722"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
-                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
+                                <!--<Setter Property="Background" TargetName="settingbd" Value="#FF2C628B"/>-->
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF5722"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
 
@@ -79,9 +79,9 @@
         </Style>
 
         <Style TargetType="Button" x:Key="CloseBtn">
-            <Setter Property="Background" Value="#FF5722" />
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="Effect">
+            <Setter Property="Background" Value="White" />
+            <!--<Setter Property="TextBlock.TextAlignment" Value="Center" />-->
+            <!--<Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect
                           ShadowDepth="6"
@@ -90,7 +90,7 @@
                           Opacity="0.35"
                           BlurRadius="0.0" />
                 </Setter.Value>
-            </Setter>
+            </Setter>-->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -99,11 +99,11 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
+                                <!--<Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>-->
                                 <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>
+                                <!--<Setter Property="Background" TargetName="settingbd" Value="#FF5722"/>-->
                                 <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -116,7 +116,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Opacity=".8" ImageSource="Assets/Image/Background.png" Stretch="UniformToFill"/>
+            <ImageBrush Opacity=".8" ImageSource="Assets/Image/background.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -124,9 +124,9 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="180 0 0 0">
             <Border>
-                <Image Width="1000" Height="200" Source="Assets/Image/Title.png"/>
+                <Image Width="1000" Height="180" Source="Assets/Image/title.jpg"/>
             </Border>
         </Grid>
         <Grid Grid.Row="1">
@@ -153,7 +153,7 @@
                 </Image>
                 <Image Name="SchoolSuccessIcon" DockPanel.Dock="Right" Visibility="Collapsed" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/Connected.png" />
+                        <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/connected.jpg" />
                     </Image.Source>
                 </Image>
                 <Controls:CircleSpinner x:Name="SchoolSpinner" DockPanel.Dock="Right" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
@@ -180,7 +180,7 @@
                 </Image>
                 <Image Name="HomeSuccessIcon" DockPanel.Dock="Right" Visibility="Collapsed" Width="60" Height="60" HorizontalAlignment="Right" VerticalAlignment="Top">
                     <Image.Source>
-                        <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/Connected.png" />
+                        <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/connected.jpg" />
                     </Image.Source>
                 </Image>
                 <Controls:CircleSpinner x:Name="HomeSpinner" DockPanel.Dock="Right" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
