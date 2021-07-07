@@ -77,7 +77,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constant.cs" />
+    <Compile Include="Controls\CircleSpinner.xaml.cs">
+      <DependentUpon>CircleSpinner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProxySetting.cs" />
+    <Page Include="Controls\CircleSpinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +154,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Image\41KH+qxOmXL.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Image\exit.jpg" />
+    <Resource Include="Assets\Image\setting.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Image\home.jpg" />
+    <Resource Include="Assets\Image\school.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

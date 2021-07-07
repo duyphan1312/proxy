@@ -33,5 +33,23 @@ namespace Proxy_Server
 
             setting.ShowDialog();
         }
+
+        private void SchoolButton_Click(object sender, RoutedEventArgs e)
+        {
+            SchoolSuccessIcon.Visibility = Visibility.Visible;
+            HomeSuccessIcon.Visibility = Visibility.Collapsed;
+            
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomeSuccessIcon.Visibility = Visibility.Visible;
+            SchoolSuccessIcon.Visibility = Visibility.Collapsed;
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }
