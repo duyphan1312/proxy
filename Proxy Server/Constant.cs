@@ -10,13 +10,19 @@ namespace Proxy_Server
     {
         public const string SETTING_PATH = @"ProxySetting.csv";
 
-        public const string DISPLAY_ERROR_PROXXSERVER = "The value of Proxy Server error!";
+        public const string DISPLAY_ERROR_PROXXSERVER = "The Value Of Proxy Server Error!";
 
-        public const string DISPLAY_ERROR_URLLIST = "The value of URL List error!";
+        public const string DISPLAY_ERROR_URLLIST = "The Value Of URL List Error!";
 
-        public const string DISPLAY_ERROR_VALUE = "File does not contain values ​​of Proxy Server and URL LIST";
+        public const string DISPLAY_ERROR_VALUE = "File Does Not Contain Values ​Of Proxy Server And URL List";
+
+        public const string DISPLAY_ERROR_FILE = "Please Choose The Correct File Format";
 
         public const string ERROR = "ERROR";
+
+        public const string NOTIFICATION = "NOTIFICATION";
+
+        public const string DISPLAY_SUCCESS_SAVE = "Successfully Saved Settings";
 
         public const string FILENAME_EXPORT = "ProxySetting";
     }
