@@ -130,6 +130,8 @@ namespace Proxy_Server
                     }
 
                     writer.Close();
+
+                    MessageBox.Show("" + Constant.DISPLAY_SUCCESS_SAVE, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }        
         }
@@ -142,58 +144,67 @@ namespace Proxy_Server
 
             string file = open.FileName;
 
-            using (var reader = new StreamReader(file))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            string fileExt = System.IO.Path.GetExtension(file);
+
+            if (fileExt != ".csv")
             {
-                var records = csv.GetRecords<ProxySetting>();
-
-                ProxySetting setting = records.FirstOrDefault();
-
-                if (setting != null)
+                MessageBox.Show("" + Constant.DISPLAY_ERROR_FILE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                using (var reader = new StreamReader(file))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    if (CheckInputProxyServer(setting.ProxyServer) == false)
+                    var records = csv.GetRecords<ProxySetting>();
+
+                    ProxySetting setting = records.FirstOrDefault();
+
+                    if (setting != null)
                     {
-                        MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    else
-                    {
-                        if (CheckInputURLList(setting.URLList) == false)
+                        if (CheckInputProxyServer(setting.ProxyServer) == false)
                         {
-                            MessageBox.Show("" + Constant.DISPLAY_ERROR_URLLIST, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         else
                         {
-                            txtProxyServer.Text = setting.ProxyServer;
-                            txtURLList.Text = setting.URLList; ;
-
-                            var fileOld = Constant.SETTING_PATH;
-
-                            var writer = new StreamWriter(fileOld);
-
-                            var csvOld = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                            if (CheckInputURLList(setting.URLList) == false)
                             {
-                                csvOld.WriteHeader<ProxySetting>();
-                                csvOld.NextRecord();
-
-                                ProxySetting newSetting = new ProxySetting()
-                                {
-                                    URLList = txtURLList.Text,
-                                    ProxyServer = txtProxyServer.Text
-                                };
-
-                                csvOld.WriteRecord(newSetting);
-                                csvOld.NextRecord();
+                                MessageBox.Show("" + Constant.DISPLAY_ERROR_URLLIST, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                             }
+                            else
+                            {
+                                txtProxyServer.Text = setting.ProxyServer;
+                                txtURLList.Text = setting.URLList; ;
 
-                            writer.Close();
+                                var fileOld = Constant.SETTING_PATH;
+
+                                var writer = new StreamWriter(fileOld);
+
+                                var csvOld = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                                {
+                                    csvOld.WriteHeader<ProxySetting>();
+                                    csvOld.NextRecord();
+
+                                    ProxySetting newSetting = new ProxySetting()
+                                    {
+                                        URLList = txtURLList.Text,
+                                        ProxyServer = txtProxyServer.Text
+                                    };
+
+                                    csvOld.WriteRecord(newSetting);
+                                    csvOld.NextRecord();
+                                }
+
+                                writer.Close();
+                            }
                         }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("" + Constant.DISPLAY_ERROR_VALUE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
-                    txtProxyServer.Text = "";
-                    txtURLList.Text = "";
+                    else
+                    {
+                        MessageBox.Show("" + Constant.DISPLAY_ERROR_VALUE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtProxyServer.Text = "";
+                        txtURLList.Text = "";
+                    }
                 }
             }
 
@@ -233,7 +244,7 @@ namespace Proxy_Server
 
                 foreach (var item in arrListURL)
                 {
-                    var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{3})";
+                    var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{2})";
 
                     Match match = Regex.Match(item, regex);
 
@@ -250,7 +261,7 @@ namespace Proxy_Server
             }
             else
             {
-                var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{3})";
+                var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{2})";
 
                 Match match = Regex.Match(input, regex);
 
