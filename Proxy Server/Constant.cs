@@ -19,5 +19,9 @@ namespace Proxy_Server
         public const string ERROR = "ERROR";
 
         public const string FILENAME_EXPORT = "ProxySetting";
+
+        public const string FAKE_PROXY_SERVER = "127.0.0.1";
+
+        public const string WIFI_ADAPTER_NAME = "Wi-Fi";
     }
 }
