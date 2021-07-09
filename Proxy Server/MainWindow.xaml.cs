@@ -56,6 +56,19 @@ namespace Proxy_Server
             {
                 SchoolSuccessIcon.Visibility = Visibility.Visible;
                 HomeSuccessIcon.Visibility = Visibility.Collapsed;
+                MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    var setting = new ProxyServerSettingDialog();
+
+                    setting.Owner = this;
+                    setting.ShowDialog();
+                }
             }
         }
 
@@ -66,6 +79,19 @@ namespace Proxy_Server
             {
                 HomeSuccessIcon.Visibility = Visibility.Visible;
                 SchoolSuccessIcon.Visibility = Visibility.Collapsed;
+                MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    var setting = new ProxyServerSettingDialog();
+
+                    setting.Owner = this;
+                    setting.ShowDialog();
+                }    
             }
         }
 
