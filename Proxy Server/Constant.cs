@@ -34,11 +34,17 @@ namespace Proxy_Server
 
         public const string SETTING_PATH = @"ProxySetting.csv";
 
+        public const string STATIC_IP_PATH = @"StaticIPList.csv";
+
+        public const string APP_DATA_PATH = @"app_data.json";
+
         public const string FILENAME_EXPORT = "ProxySetting";
 
         public const string FAKE_PROXY_SERVER = "127.0.0.1";
 
-        public const string WIFI_ADAPTER_NAME = "Wi-Fi";      
+        public const string WIFI_ADAPTER_NAME = "Wi-Fi";
+
+        public const string DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE = "This app must be run as Administration";
 
     }
 }

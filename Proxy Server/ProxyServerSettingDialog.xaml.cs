@@ -54,12 +54,15 @@ namespace Proxy_Server
                 {
 
                     string[] proxyServer = setting.ProxyServer.Split('.', ':');
-                    txtProxyServer.firstBox.Text = proxyServer[0];
-                    txtProxyServer.secondBox.Text = proxyServer[1];
-                    txtProxyServer.thirdBox.Text = proxyServer[2];
-                    txtProxyServer.fourthBox.Text = proxyServer[3];
-                    txtProxyServer.fivethBox.Text = proxyServer[4];
-                    txtURLList.Text = setting.URLList; ;
+                    if (proxyServer.Length >= 5)
+                    {
+                        txtProxyServer.firstBox.Text = proxyServer[0];
+                        txtProxyServer.secondBox.Text = proxyServer[1];
+                        txtProxyServer.thirdBox.Text = proxyServer[2];
+                        txtProxyServer.fourthBox.Text = proxyServer[3];
+                        txtProxyServer.fivethBox.Text = proxyServer[4];
+                        txtURLList.Text = setting.URLList;
+                    }
                 }
             }
         }
