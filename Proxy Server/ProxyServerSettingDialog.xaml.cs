@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.IO;
-using CsvHelper;
-using System.Globalization;
-using CsvHelper.Configuration;
+﻿using CsvHelper;
 using Microsoft.Win32;
+using System;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace Proxy_Server
 {
@@ -292,11 +281,11 @@ namespace Proxy_Server
 
             if (match.Success)
             {
-                return true;              
+                return true;
             }
 
             return false;
-        }   
+        }
 
         private bool CheckInputProxyServerValue()
         {
