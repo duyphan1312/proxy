@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proxy_Server"
+        xmlns:control="clr-namespace:Proxy_Server.Controls"
         mc:Ignorable="d"
         Title="PROXY SERVER" Height="370" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman">
     <Window.Resources>
@@ -47,25 +48,26 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Proxy Server: "/>
-                <TextBox   Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontWeight="Bold" FontSize="18" Name="txtProxyServer"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="URL List:"/>
-                <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  Margin="10" Height="60" FontWeight="Bold" FontSize="18" Name="txtURLList"
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Proxy サーバ: "/>
+                <!--<TextBox   Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontWeight="Bold" FontSize="18" Name="txtProxyServer"/>-->
+                <control:TextBoxIP Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="-24,10,100,10" Height="40" FontWeight="Bold" FontSize="18" x:Name="txtProxyServer" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="ドメインリスト:"/>
+                <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  Margin="10" Height="90" FontWeight="Bold" FontSize="18" Name="txtURLList"
                              AcceptsReturn="True" TextWrapping="Wrap"
                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              ScrollViewer.CanContentScroll="True"/>
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Import Setting" Width="120" Height="35" Margin="5,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
+                    <Button Content="インポート" Width="120" Height="35" Margin="5,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
                     </Button>
-                    <Button Content="Export Setting" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" IsCancel="True" FontSize="14" FontWeight="Bold" Click="ExportButton_Click">
+                    <Button Content="エクスポート" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" IsCancel="True" FontSize="14" FontWeight="Bold" Click="ExportButton_Click">
                     </Button>
                 </StackPanel>
-              
+
                 <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Content="Save" Width="120" Height="35" Margin="5,30,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click">
+                    <Button Content="保存" Width="120" Height="35" Margin="5,20,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click">
                     </Button>
-                    <Button Content="Cancel" Width="120" Height="35" Margin="20,30,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="CancelButton" IsCancel="True" FontSize="14" FontWeight="Bold">
+                    <Button Content="キャンセル" Width="120" Height="35" Margin="20,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="CancelButton" IsCancel="True" FontSize="14" FontWeight="Bold">
                     </Button>
                 </StackPanel>
             </Grid>

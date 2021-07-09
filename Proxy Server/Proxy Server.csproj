@@ -75,6 +75,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -85,8 +100,15 @@
     <Compile Include="Controls\CircleSpinner.xaml.cs">
       <DependentUpon>CircleSpinner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TextBoxIP.xaml.cs">
+      <DependentUpon>TextBoxIP.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProxySetting.cs" />
     <Page Include="Controls\CircleSpinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TextBoxIP.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,33 +160,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Image\baseline_logout_white_18dp.png" />
-    <Resource Include="Assets\Image\baseline_perm_data_setting_white_18dp.png" />
-    <Resource Include="Assets\Image\baseline_settings_white_18dp.png" />
-    <Resource Include="Assets\Image\baseline_wifi_white_18dp.png" />
-    <Resource Include="Assets\Image\Cancel.png" />
-    <Resource Include="Assets\Image\Disconnect.png" />
-    <Resource Include="Assets\Image\gradient_BG.png" />
-    <Resource Include="Assets\Image\HomeWifi.png" />
-    <Resource Include="Assets\Image\OK_Btn.png" />
-    <Resource Include="Assets\Image\Reset.png" />
-    <Resource Include="Assets\Image\Reset_press.png" />
-    <Resource Include="Assets\Image\SchoolWifi.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Image\exit.jpg" />
-    <Resource Include="Assets\Image\setting.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Image\background.jpg" />
-    <Resource Include="Assets\Image\home.jpg" />
-    <Resource Include="Assets\Image\school.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Image\title.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Image\connected.jpg" />
+    <Resource Include="Assets\Image\Background.png" />
+    <Resource Include="Assets\Image\ExitButton.png" />
+    <Resource Include="Assets\Image\Home.png" />
+    <Resource Include="Assets\Image\Proxy1.png" />
+    <Resource Include="Assets\Image\Proxy2.png" />
+    <Resource Include="Assets\Image\Proxy_check.png" />
+    <Resource Include="Assets\Image\School.png" />
+    <Resource Include="Assets\Image\SettingButton.png" />
+    <Resource Include="Assets\Image\Tick.png" />
+    <Resource Include="Assets\Image\Title.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
