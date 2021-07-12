@@ -68,6 +68,13 @@ namespace Proxy_Server
 
                         setting.Owner = this;
                         setting.ShowDialog();
+
+                        setting.txtProxyServer.firstBox.Text = "";
+                        setting.txtProxyServer.secondBox.Text = "";
+                        setting.txtProxyServer.thirdBox.Text = "";
+                        setting.txtProxyServer.fivethBox.Text = "";
+                        setting.txtProxyServer.fourthBox.Text = "";
+                        setting.txtURLList.Text = "";
                     }
                 }
             }
@@ -100,6 +107,12 @@ namespace Proxy_Server
 
                         setting.Owner = this;
                         setting.ShowDialog();
+                        setting.txtProxyServer.firstBox.Text = "";
+                        setting.txtProxyServer.secondBox.Text = "";
+                        setting.txtProxyServer.thirdBox.Text = "";
+                        setting.txtProxyServer.fivethBox.Text = "";
+                        setting.txtProxyServer.fourthBox.Text = "";
+                        setting.txtURLList.Text = "";
                     }
                 }
             }
