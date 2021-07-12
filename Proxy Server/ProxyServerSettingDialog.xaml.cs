@@ -53,6 +53,7 @@ namespace Proxy_Server
                         txtURLList.Text = setting.URLList;
                     }
                 }
+                reader.Close();
             }
         }
 
@@ -225,6 +226,8 @@ namespace Proxy_Server
                                     txtProxyServer.fourthBox.Text = proxyServer[3];
                                     txtProxyServer.fivethBox.Text = proxyServer[4];
                                     txtURLList.Text = setting.URLList; ;
+
+                                    reader.Close();
 
                                     var fileOld = Constant.SETTING_PATH;
 
