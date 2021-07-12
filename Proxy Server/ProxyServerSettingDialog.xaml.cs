@@ -192,76 +192,84 @@ namespace Proxy_Server
                 using (var reader = new StreamReader(file))
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    var records = csv.GetRecords<ProxySetting>();
-
-                    ProxySetting setting = records.FirstOrDefault();
-
-                    if (setting != null)
+                    try
                     {
-                        if (CheckInputProxyServer(setting.ProxyServer) == false)
-                        {
-                            System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                        else
-                        {
-                            string[] strPServer = setting.ProxyServer.Split('.', ':');
+                        var records = csv.GetRecords<ProxySetting>();
 
-                            if (Int32.Parse(strPServer[0]) >= 266 || Int32.Parse(strPServer[1]) >= 266 || Int32.Parse(strPServer[2]) >= 266 || Int32.Parse(strPServer[3]) >= 266 || Int32.Parse(strPServer[4]) >= 1000000)
+                        ProxySetting setting = records.FirstOrDefault();
+
+                        if (setting != null)
+                        {
+                            if (CheckInputProxyServer(setting.ProxyServer) == false)
                             {
                                 System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                             else
                             {
-                                if (CheckInputURLList(setting.URLList) == false)
+                                string[] strPServer = setting.ProxyServer.Split('.', ':');
+
+                                if (Int32.Parse(strPServer[0]) >= 266 || Int32.Parse(strPServer[1]) >= 266 || Int32.Parse(strPServer[2]) >= 266 || Int32.Parse(strPServer[3]) >= 266 || Int32.Parse(strPServer[4]) >= 1000000)
                                 {
-                                    System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_URLLIST, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                                    System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_PROXXSERVER, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                                 }
                                 else
                                 {
-                                    string[] proxyServer = setting.ProxyServer.Split('.', ':');
-                                    txtProxyServer.firstBox.Text = proxyServer[0];
-                                    txtProxyServer.secondBox.Text = proxyServer[1];
-                                    txtProxyServer.thirdBox.Text = proxyServer[2];
-                                    txtProxyServer.fourthBox.Text = proxyServer[3];
-                                    txtProxyServer.fivethBox.Text = proxyServer[4];
-                                    txtURLList.Text = setting.URLList; ;
-
-                                    var fileOld = Constant.SETTING_PATH;
-
-                                    var writer = new StreamWriter(fileOld);
-
-                                    var csvOld = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                                    if (CheckInputURLList(setting.URLList) == false)
                                     {
-                                        csvOld.WriteHeader<ProxySetting>();
-                                        csvOld.NextRecord();
-
-                                        string prxServer = txtProxyServer.firstBox.Text + "." + txtProxyServer.secondBox.Text + "." + txtProxyServer.thirdBox.Text + "." + txtProxyServer.fourthBox.Text + ":" + txtProxyServer.fivethBox.Text;
-
-                                        ProxySetting newSetting = new ProxySetting()
-                                        {
-                                            URLList = txtURLList.Text,
-                                            ProxyServer = prxServer
-                                        };
-
-                                        csvOld.WriteRecord(newSetting);
-                                        csvOld.NextRecord();
+                                        System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_URLLIST, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                                     }
+                                    else
+                                    {
+                                        string[] proxyServer = setting.ProxyServer.Split('.', ':');
+                                        txtProxyServer.firstBox.Text = proxyServer[0];
+                                        txtProxyServer.secondBox.Text = proxyServer[1];
+                                        txtProxyServer.thirdBox.Text = proxyServer[2];
+                                        txtProxyServer.fourthBox.Text = proxyServer[3];
+                                        txtProxyServer.fivethBox.Text = proxyServer[4];
+                                        txtURLList.Text = setting.URLList; ;
 
-                                    writer.Close();
+                                        var fileOld = Constant.SETTING_PATH;
+
+                                        var writer = new StreamWriter(fileOld);
+
+                                        var csvOld = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                                        {
+                                            csvOld.WriteHeader<ProxySetting>();
+                                            csvOld.NextRecord();
+
+                                            string prxServer = txtProxyServer.firstBox.Text + "." + txtProxyServer.secondBox.Text + "." + txtProxyServer.thirdBox.Text + "." + txtProxyServer.fourthBox.Text + ":" + txtProxyServer.fivethBox.Text;
+
+                                            ProxySetting newSetting = new ProxySetting()
+                                            {
+                                                URLList = txtURLList.Text,
+                                                ProxyServer = prxServer
+                                            };
+
+                                            csvOld.WriteRecord(newSetting);
+                                            csvOld.NextRecord();
+                                        }
+
+                                        writer.Close();
+                                    }
                                 }
-                            }
 
+                            }
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_VALUE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                            txtProxyServer.firstBox.Text = "";
+                            txtProxyServer.secondBox.Text = "";
+                            txtProxyServer.thirdBox.Text = "";
+                            txtProxyServer.fourthBox.Text = "";
+                            txtProxyServer.fivethBox.Text = "";
+                            txtURLList.Text = "";
                         }
                     }
-                    else
+                    catch
                     {
-                        System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_VALUE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
-                        txtProxyServer.firstBox.Text = "";
-                        txtProxyServer.secondBox.Text = "";
-                        txtProxyServer.thirdBox.Text = "";
-                        txtProxyServer.fourthBox.Text = "";
-                        txtProxyServer.fivethBox.Text = "";
-                        txtURLList.Text = "";
+
+                        System.Windows.MessageBox.Show("" + Constant.DISPLAY_ERROR_FILE, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
