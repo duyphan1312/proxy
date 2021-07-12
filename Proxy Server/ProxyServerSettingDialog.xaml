@@ -60,9 +60,8 @@
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Content="インポート" Width="120" Height="35" Margin="5,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
                     </Button>
-                    <Button Content="エクスポート" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" IsCancel="True" FontSize="14" FontWeight="Bold" Click="ExportButton_Click">
-                    </Button>
-                </StackPanel>
+                    <Button Content="エクスポート" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" FontSize="14" FontWeight="Bold" Click="ExportButton_Click"/>
+        </StackPanel>
 
                 <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
                     <Button Content="保存" Width="120" Height="35" Margin="5,20,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click">
