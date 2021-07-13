@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StrongProxy"
         xmlns:control="clr-namespace:StrongProxy.Controls"
         mc:Ignorable="d"
-        Title="PROXY SERVER" Height="370" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman">
+        Title="PROXY SERVER" Height="370" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/Icon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="Pink" />
