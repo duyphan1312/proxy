@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Proxy_Server
+namespace StrongProxy
 {
     /// <summary>
     /// Interaction logic for App.xaml

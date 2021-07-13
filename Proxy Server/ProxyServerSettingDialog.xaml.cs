@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 
-namespace Proxy_Server
+namespace StrongProxy
 {
     /// <summary>
     /// Interaction logic for MainWindow_3.xaml
