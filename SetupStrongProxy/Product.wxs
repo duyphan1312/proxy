@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="SetupStrongProxy" Language="1033" Version="1.0.0.0" Manufacturer="Nova Square" UpgradeCode="5b1e51ee-b1da-44aa-8b03-7bdc192c3a98">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="SetupStrongProxy" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="SetupStrongProxy" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="ProductComponent">
+				<File Source="$(var.StrongProxy.TargetPath)" />
+			</Component>
+			<Component Id="CsvHelper.dll" Guid="cebbb431-aa4d-4257-9ce0-5b57e5394f3f">
+				<File Id="CsvHelper.dll" Source="CsvHelper.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="log4net.dll" Guid="3d7078e3-5438-4cff-88ce-92449c74549a">
+				<File Id="log4net.dll" Source="log4net.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="Newtonsoft.Json.dll" Guid="b72f6066-6f14-4dcd-8d53-55a6dd367682">
+				<File Id="Newtonsoft.Json.dll" Source="Newtonsoft.Json.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="System.Buffers.dll" Guid="dc6dec22-0307-491b-8f0a-81250e2f6d16">
+				<File Id="System.Buffers.dll" Source="System.Buffers.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="System.Memory.dll" Guid="ca8b548f-ba5d-4685-b463-b35bac591d16">
+				<File Id="System.Memory.dll" Source="System.Memory.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="System.Runtime.CompilerServices.Unsafe.dll" Guid="efcdd608-4d87-45f9-8573-3f13961153e7">
+				<File Id="System.Runtime.CompilerServices.Unsafe.dll" Source="System.Runtime.CompilerServices.Unsafe.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="System.ValueTuple.dll" Guid="8d4745e6-ffc4-499d-b494-b36cf8100751">
+				<File Id="System.ValueTuple.dll" Source="System.ValueTuple.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="Xceed.Wpf.AvalonDock.dll" Guid="ab32f84c-a96c-468f-8ea3-6f972ea3eff6">
+				<File Id="Xceed.Wpf.AvalonDock.dll" Source="Xceed.Wpf.AvalonDock.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="Xceed.Wpf.AvalonDock.Themes.Aero.dll" Guid="1d220318-49b9-4f08-a3f5-edf6321de76b">
+				<File Id="Xceed.Wpf.AvalonDock.Themes.Aero.dll" Source="Xceed.Wpf.AvalonDock.Themes.Aero.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="Xceed.Wpf.AvalonDock.Themes.Metro.dll" Guid="0d30343e-b516-4107-ad23-5012fac32387">
+				<File Id="Xceed.Wpf.AvalonDock.Themes.Metro.dll" Source="Xceed.Wpf.AvalonDock.Themes.Metro.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Guid="4865ba62-6e6e-4d4a-8467-b3727cd1f511">
+				<File Id="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" Source="Xceed.Wpf.AvalonDock.Themes.VS2010.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="Xceed.Wpf.Toolkit.dll" Guid="3591b72b-2e52-4eb0-a7b1-47cef8f644b0">
+				<File Id="Xceed.Wpf.Toolkit.dll" Source="Xceed.Wpf.Toolkit.dll" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="app_data.json" Guid="69b7d8ce-b049-4f2e-9638-595d7472aef3">
+				<File Id="app_data.json" Source="app_data.json" KeyPath="yes" Checksum="yes"/>
+			</Component>
+			<Component Id="StaticIPList.csv" Guid="c5aab699-18f6-4562-b92c-8e44403c726c">
+				<File Id="StaticIPList.csv" Source="StaticIPList.csv" KeyPath="yes" Checksum="yes"/>
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
