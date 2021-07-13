@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Proxy_Server"
-        xmlns:Controls="clr-namespace:Proxy_Server.Controls"
-        x:Class="Proxy_Server.MainWindow"
+        xmlns:local="clr-namespace:StrongProxy"
+        xmlns:Controls="clr-namespace:StrongProxy.Controls"
+        x:Class="StrongProxy.MainWindow"
         mc:Ignorable="d"
         Title="PROXY SERVER" Height="720" Width="1280"  WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize">
     <Window.Resources>

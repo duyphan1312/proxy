@@ -1,4 +1,4 @@
-﻿namespace Proxy_Server
+﻿namespace StrongProxy
 {
     public class AppData
     {

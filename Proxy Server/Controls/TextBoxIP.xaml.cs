@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Proxy_Server.Controls
+namespace StrongProxy.Controls
 {
     /// <summary>
     /// Interaction logic for TextBoxIP.xaml

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Proxy_Server.Controls
+namespace StrongProxy.Controls
 {
     /// <summary>
     /// Interaction logic for CircleSpinner.xaml

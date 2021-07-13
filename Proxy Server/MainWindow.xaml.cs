@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Windows;
 
-namespace Proxy_Server
+namespace StrongProxy
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
