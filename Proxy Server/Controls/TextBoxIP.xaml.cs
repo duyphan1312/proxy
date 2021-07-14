@@ -136,7 +136,7 @@ namespace StrongProxy.Controls
                 return;
             }
 
-            if (currentBox.Text.Length == 6 && currentBox.SelectionLength == 0)
+            if (currentBox.Text.Length == 5 && currentBox.SelectionLength == 0)
             {
                 e.Handled = true;
                 SystemSounds.Beep.Play();
@@ -283,7 +283,15 @@ namespace StrongProxy.Controls
 
         //private void fivethBox_TextChanged(object sender, TextChangedEventArgs e)
         //{
-        //    handleTextChange_2(fivethBox, fivethBox);
+        //    int value = Int32.Parse(fivethBox.Text);
+
+        //    if (value >= 65536)
+        //    {
+        //        fivethBox.Clear();
+        //        fivethBox.Focus();
+        //        SystemSounds.Beep.Play();
+        //        MessageBox.Show("" + Constant.DISPLAY_ERROR_IP, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
         //}
     }
 }
