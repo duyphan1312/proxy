@@ -11,6 +11,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Windows;
+using System.Windows.Media;
 
 namespace StrongProxy
 {
@@ -55,12 +56,17 @@ namespace StrongProxy
                 {
                     SchoolSuccessIcon.Visibility = Visibility.Visible;
                     HomeSuccessIcon.Visibility = Visibility.Collapsed;
-                    MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+                    //MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    tbNofication.Text = Constant.DISPLAY_SUCCESS_CONNECT;
+                    tbNofication.Foreground = new SolidColorBrush(Colors.Blue);
+                    tbNofication.Visibility = Visibility.Visible;
+
                     SetAppData(new AppData() { IsHome = false, IsSchool = true });
                 }
                 else
                 {
-                    var result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    var result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
 
                     if (result == MessageBoxResult.Yes)
                     {
@@ -87,12 +93,17 @@ namespace StrongProxy
                 {
                     HomeSuccessIcon.Visibility = Visibility.Visible;
                     SchoolSuccessIcon.Visibility = Visibility.Collapsed;
-                    MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+                    //MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    tbNofication.Text = Constant.DISPLAY_SUCCESS_CONNECT;
+                    tbNofication.Foreground = new SolidColorBrush(Colors.Blue);
+                    tbNofication.Visibility = Visibility.Visible;
+
                     SetAppData(new AppData() { IsHome = true, IsSchool = false });
                 }
                 else
                 {
-                    var result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.YesNo, MessageBoxImage.Error);
+                    var result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
 
                     if (result == MessageBoxResult.Yes)
                     {

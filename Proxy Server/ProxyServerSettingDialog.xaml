@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StrongProxy"
         xmlns:control="clr-namespace:StrongProxy.Controls"
         mc:Ignorable="d"
-        Title="PROXY SERVER" Height="370" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/Icon.png">
+        Title="STRONG PROXY" Height="390" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="Pink" />
@@ -34,7 +34,7 @@
     </Window.Resources>
 
     <Grid>
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="10,40,10,0">
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Margin="10,20,10,20">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -50,19 +50,18 @@
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Proxy サーバ: "/>
                 <!--<TextBox   Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontWeight="Bold" FontSize="18" Name="txtProxyServer"/>-->
-                <control:TextBoxIP Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="-24,10,100,10" Height="40" FontWeight="Bold" FontSize="18" x:Name="txtProxyServer" />
+                <control:TextBoxIP Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="-24,10,100,10" Height="40" FontSize="18" x:Name="txtProxyServer" />
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="ドメインリスト:"/>
-                <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  Margin="10" Height="90" FontWeight="Bold" FontSize="18" Name="txtURLList"
+                <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  Margin="10" Height="90" FontSize="18" Name="txtURLList"
                              AcceptsReturn="True" TextWrapping="Wrap"
                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              ScrollViewer.CanContentScroll="True"/>
-                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">
                     <Button Content="インポート" Width="120" Height="35" Margin="5,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
                     </Button>
                     <Button Content="エクスポート" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" FontSize="14" FontWeight="Bold" Click="ExportButton_Click"/>
-        </StackPanel>
-
+                </StackPanel>
                 <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
                     <Button Content="保存" Width="120" Height="35" Margin="5,20,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click">
                     </Button>

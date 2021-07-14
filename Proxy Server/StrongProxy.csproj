@@ -161,7 +161,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Assets\Image\Icon.png" />
+    <Resource Include="Assets\Image\ProxyIcon.png" />
     <Content Include="StaticIPList.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -173,8 +173,6 @@
     <Resource Include="Assets\Image\Background.png" />
     <Resource Include="Assets\Image\ExitButton.png" />
     <Resource Include="Assets\Image\Home.png" />
-    <Resource Include="Assets\Image\Proxy1.png" />
-    <Resource Include="Assets\Image\Proxy2.png" />
     <Resource Include="Assets\Image\Proxy_check.png" />
     <Resource Include="Assets\Image\School.png" />
     <Resource Include="Assets\Image\SettingButton.png" />

@@ -7,7 +7,7 @@
         xmlns:Controls="clr-namespace:StrongProxy.Controls"
         x:Class="StrongProxy.MainWindow"
         mc:Ignorable="d"
-        Title="PROXY SERVER" Height="720" Width="1280"  WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" Icon="Assets/Image/Icon.png">
+        Title="STRONG PROXY" Height="720" Width="1280"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ConnectButton">
             <Setter Property="Background" Value="White" />
@@ -65,11 +65,11 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <!--<Setter Property="Background" TargetName="settingbd" Value="#FF2C628B"/>-->
-                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF5722"/>
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <!--<Setter Property="Background" TargetName="settingbd" Value="#FF2C628B"/>-->
-                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF5722"/>
+                                <Setter Property="BorderBrush" TargetName="settingbd" Value="#FF2C628B"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
 
@@ -195,6 +195,12 @@
                 </Controls:CircleSpinner>
             </DockPanel>
         </Grid>
+
+        <Grid Grid.Row="2" Margin="0 10 0 0">
+            <TextBlock FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       x:Name="tbNofication" Visibility="Collapsed"></TextBlock>
+        </Grid>
+        
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="197*"/>

@@ -96,7 +96,7 @@
                  Grid.Column="8"
                  BorderThickness="0"
                  Background="{x:Null}" 
-                 MaxLength="6"
+                 MaxLength="5"
                  Text=""
                  TextAlignment="Center"
                  VerticalAlignment="Center"    
