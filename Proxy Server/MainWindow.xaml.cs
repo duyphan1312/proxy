@@ -59,7 +59,7 @@ namespace StrongProxy
                     //MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
 
                     tbNofication.Text = Constant.DISPLAY_SUCCESS_CONNECT;
-                    tbNofication.Foreground = new SolidColorBrush(Colors.Blue);
+                    tbNofication.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#048caf");
                     tbNofication.Visibility = Visibility.Visible;
 
                     SetAppData(new AppData() { IsHome = false, IsSchool = true });
@@ -96,7 +96,7 @@ namespace StrongProxy
                     //MessageBox.Show("" + Constant.DISPLAY_SUCCESS_CONNECT, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
 
                     tbNofication.Text = Constant.DISPLAY_SUCCESS_CONNECT;
-                    tbNofication.Foreground = new SolidColorBrush(Colors.Blue);
+                    tbNofication.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#048caf");
                     tbNofication.Visibility = Visibility.Visible;
 
                     SetAppData(new AppData() { IsHome = true, IsSchool = false });
