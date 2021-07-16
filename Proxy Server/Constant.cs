@@ -58,7 +58,7 @@
 
         public const string DISPLAY_SUCCESS_SAVE = "設定は正常に保存されました。";
 
-        public const string DISPLAY_SUCCESS_CONNECT = "接続済み。";
+        public const string DISPLAY_SUCCESS_CONNECT = "接続済み";
 
         public const string QUESTION = "質問";
 
