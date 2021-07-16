@@ -31,11 +31,14 @@ namespace StrongProxy
         public MainWindow()
         {
             InitializeComponent();
-            var appData = GetAppData();
-            if (appData != null)
+            if (IsEnableProxy())
             {
-                SchoolSuccessIcon.Visibility = appData.IsSchool ? Visibility.Visible : Visibility.Collapsed;
-                HomeSuccessIcon.Visibility = appData.IsHome ? Visibility.Visible : Visibility.Collapsed;
+                var appData = GetAppData();
+                if (appData != null)
+                {
+                    SchoolSuccessIcon.Visibility = appData.IsSchool ? Visibility.Visible : Visibility.Collapsed;
+                    HomeSuccessIcon.Visibility = appData.IsHome ? Visibility.Visible : Visibility.Collapsed;
+                }
             }
         }
 
@@ -154,6 +157,15 @@ namespace StrongProxy
             }
             bool isSetDHCP = SetDHCP(Constant.WIFI_ADAPTER_NAME);
             return isSetProxy && isSetDHCP;
+        }
+
+        private bool IsEnableProxy()
+        {
+            const string userRoot = "HKEY_CURRENT_USER";
+            const string subkey = "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings";
+            const string keyName = userRoot + "\\" + subkey;
+            int x = (int) Registry.GetValue(keyName, "ProxyEnable", "1");
+            return x == 1;
         }
 
         private bool SetProxy(string proxy, string domainList)
