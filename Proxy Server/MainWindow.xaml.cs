@@ -176,10 +176,14 @@ namespace StrongProxy
                 const string subkey = "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings";
                 const string keyName = userRoot + "\\" + subkey;
 
-                Registry.SetValue(keyName, "ProxyEnable", "1");
+                Registry.SetValue(keyName, "ProxyEnable", 1);
                 Registry.SetValue(keyName, "ProxyServer", proxy);
                 Registry.SetValue(keyName, "ProxyOverride", domainList);
 
+                const string subKeyDisable = "Software\\Policies\\Microsoft\\Internet Explorer\\Control Panel";
+                const string keyNameDisable = userRoot + "\\" + subKeyDisable;
+                Registry.SetValue(keyNameDisable, "Proxy", 1);
+                Registry.SetValue(keyNameDisable, "AdvancedTab", 1);
 
                 // These lines implement the Interface in the beginning of program 
                 // They cause the OS to refresh the settings, causing IP to realy update
