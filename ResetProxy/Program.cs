@@ -39,6 +39,13 @@ namespace ResetProxy
                 const string keyNameDisable = userRoot + "\\" + subKeyDisable;
                 Registry.SetValue(keyNameDisable, "Proxy", 0);
                 Registry.SetValue(keyNameDisable, "AdvancedTab", 0);
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(subKeyDisable, true))
+                {
+                    if (key != null)
+                    {
+                        key.DeleteValue("Proxy");
+                    }
+                }
 
                 // These lines implement the Interface in the beginning of program 
                 // They cause the OS to refresh the settings, causing IP to realy update
