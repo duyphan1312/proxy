@@ -40,6 +40,16 @@ namespace StrongProxy
                     HomeSuccessIcon.Visibility = appData.IsHome ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
+
+            var setting = ReadSetting();
+            if (!string.IsNullOrEmpty(setting.HomeLabel))
+            {
+                txtHomeLabel.Text = setting.HomeLabel;
+            }
+            if (!string.IsNullOrEmpty(setting.SchoolLabel))
+            {
+                txtSchoolLabel.Text = setting.SchoolLabel;
+            }
         }
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)
