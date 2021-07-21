@@ -31,25 +31,30 @@ namespace StrongProxy
         public MainWindow()
         {
             InitializeComponent();
-            if (IsEnableProxy())
+            var appData = GetAppData();
+            if (IsEnableProxy() && appData!= null && appData.IsHome)
             {
-                var appData = GetAppData();
-                if (appData != null)
-                {
-                    SchoolSuccessIcon.Visibility = appData.IsSchool ? Visibility.Visible : Visibility.Collapsed;
-                    HomeSuccessIcon.Visibility = appData.IsHome ? Visibility.Visible : Visibility.Collapsed;
-                }
+                HomeSuccessIcon.Visibility = Visibility.Visible;
+            }
+
+            if (!IsEnableProxy() && appData != null && appData.IsSchool)
+            {
+                SchoolSuccessIcon.Visibility = Visibility.Visible;
             }
 
             var setting = ReadSetting();
-            if (!string.IsNullOrEmpty(setting.HomeLabel))
+            if (setting != null)
             {
-                txtHomeLabel.Text = setting.HomeLabel;
+                if (!string.IsNullOrEmpty(setting.HomeLabel))
+                {
+                    txtHomeLabel.Text = setting.HomeLabel;
+                }
+                if (!string.IsNullOrEmpty(setting.SchoolLabel))
+                {
+                    txtSchoolLabel.Text = setting.SchoolLabel;
+                }
             }
-            if (!string.IsNullOrEmpty(setting.SchoolLabel))
-            {
-                txtSchoolLabel.Text = setting.SchoolLabel;
-            }
+            
         }
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)
@@ -143,18 +148,15 @@ namespace StrongProxy
         {
             var setting = ReadSetting();
             var staticIP = ReadStaticIP();
-            bool isSetProxy = false;
+            bool isDisableProxy = false;
             bool isSetIP = false;
-            if (setting != null)
-            {
-                isSetProxy = SetProxy(setting.ProxyServer, "");
-            }
+            isDisableProxy = DisableProxy();
             if (staticIP != null)
             {
-                isSetIP = SetStaticIP(Constant.WIFI_ADAPTER_NAME, staticIP.IP, staticIP.Gateway, staticIP.DNS);
+                isSetIP = SetStaticIP(Constant.WIFI_ADAPTER_NAME, staticIP.IP, staticIP.SubnetMask, staticIP.Gateway, staticIP.DNS1, staticIP.DNS2);
             }
 
-            return isSetProxy && isSetIP;
+            return isDisableProxy && isSetIP;
         }
 
         private bool HomeFunction()
@@ -176,6 +178,27 @@ namespace StrongProxy
             const string keyName = userRoot + "\\" + subkey;
             int x = (int) Registry.GetValue(keyName, "ProxyEnable", "1");
             return x == 1;
+        }
+
+        private bool DisableProxy()
+        {
+            try
+            {
+                const string userRoot = "HKEY_CURRENT_USER";
+                const string subkey = "Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings";
+                const string keyName = userRoot + "\\" + subkey;
+
+                Registry.SetValue(keyName, "ProxyEnable", 0);
+
+                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_PROXY_SETTINGS_CHANGED, IntPtr.Zero, 0);
+                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_SETTINGS_CHANGED, IntPtr.Zero, 0);
+                InternetSetOption(IntPtr.Zero, INTERNET_OPTION_REFRESH, IntPtr.Zero, 0);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         private bool SetProxy(string proxy, string domainList)
@@ -212,9 +235,9 @@ namespace StrongProxy
 
         }
 
-        public bool SetStaticIP(string network, string ip, string subnet, string dns)
+        public bool SetStaticIP(string network, string ip, string subnetMask, string gateway, string dns1, string dns2)
         {
-            return SetIP("/c netsh interface ip set address \"" + network + "\" static " + ip + " " + subnet + " " + dns + " & netsh interface ip set dns \"" + network + "\" static " + dns);
+            return SetIP("/c netsh interface ip set address \"" + network + "\" static " + ip + " " + subnetMask + " " + gateway + " & netsh interface ip set dns \"" + network + "\" static " + dns1 + " & netsh interface ip set dns \"" + network + "\" static " + dns2 + " index=2");
         }
         public bool SetDHCP(string network)
         {
