@@ -141,7 +141,7 @@
                 <StackPanel Orientation="Vertical">
                     <Image>
                         <Image.Source>
-                            <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/Proxy_03.png" />
+                            <BitmapImage DecodePixelWidth="300" UriSource="Assets/Image/School.png" />
                         </Image.Source>
                     </Image>
                 </StackPanel>
@@ -170,7 +170,7 @@
             </DockPanel>
             <Button Grid.Column="2" Name="HomeButton" Width="300" Height="277" Style="{StaticResource ConnectButton}" Click="HomeButton_Click">
                 <StackPanel Orientation="Vertical">
-                    <Image Source="Assets/Image/Proxy_05.png" />
+                    <Image Source="Assets/Image/Home.png" />
                 </StackPanel>
             </Button>
             <DockPanel Grid.Column="2" Height="300" Width="300">

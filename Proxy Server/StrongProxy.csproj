@@ -187,8 +187,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="Assets\Image\ProxyIcon.png" />
-    <Resource Include="Assets\Image\Proxy_03.png" />
-    <Resource Include="Assets\Image\Proxy_05.png" />
+    <Resource Include="Assets\Image\School.png" />
+    <Resource Include="Assets\Image\Home.png" />
     <Content Include="StaticIPList.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
