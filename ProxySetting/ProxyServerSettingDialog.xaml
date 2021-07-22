@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProxySetting"
         xmlns:control="clr-namespace:ProxySetting.Controls"
         mc:Ignorable="d"
-        Title="PROXY SETTING" Height="500" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
+        Title="PROXY SETTING" Height="500" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="Pink" />
@@ -60,10 +60,10 @@
                              ScrollViewer.VerticalScrollBarVisibility="Auto"
                              ScrollViewer.CanContentScroll="True"/>
 
-                <TextBlock Grid.Row="2" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Home Label:"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="「じたく」の文字:"/>
                 <TextBox   Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontSize="18" x:Name="txtHomeLabel" MaxLength="6"/>
 
-                <TextBlock Grid.Row="3" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="School Label:"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="「がっこう」の文字:"/>
                 <TextBox   Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontSize="18" x:Name="txtSchoolLabel" MaxLength="6"/>
 
                 <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">

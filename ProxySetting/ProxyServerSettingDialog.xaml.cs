@@ -60,6 +60,8 @@ namespace ProxySetting
                         txtProxyServer.fourthBox.Text = proxyServer[3];
                         txtProxyServer.fivethBox.Text = proxyServer[4];
                         txtURLList.Text = setting.URLList;
+                        txtHomeLabel.Text = setting.HomeLabel;
+                        txtSchoolLabel.Text = setting.SchoolLabel;
                     }
                 }
 
@@ -238,7 +240,7 @@ namespace ProxySetting
                                         }
                                         else
                                         {
-                                            if (CheckLabel(txtSchoolLabel.Text) && CheckLabel(txtHomeLabel.Text))
+                                            if (CheckLabel(setting.HomeLabel) && CheckLabel(setting.SchoolLabel))
                                             {
                                                 txtSchoolLabel.Text = setting.SchoolLabel;
                                                 txtHomeLabel.Text = setting.HomeLabel;
@@ -386,12 +388,12 @@ namespace ProxySetting
 
         private bool CheckLabel(string input)
         {
-            if (input.Length >= 7)
+            if (input.Length <= 6)
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
