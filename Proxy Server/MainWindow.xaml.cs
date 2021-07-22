@@ -31,7 +31,7 @@ namespace StrongProxy
         public MainWindow()
         {
             InitializeComponent();
-            var appData = GetAppData();
+            AppData appData = GetAppData();
             if (IsEnableProxy() && appData!= null && appData.IsHome)
             {
                 HomeSuccessIcon.Visibility = Visibility.Visible;
@@ -42,7 +42,7 @@ namespace StrongProxy
                 SchoolSuccessIcon.Visibility = Visibility.Visible;
             }
 
-            var setting = ReadSetting();
+            ProxySetting setting = ReadSetting();
             if (setting != null)
             {
                 if (!string.IsNullOrEmpty(setting.HomeLabel))
@@ -59,7 +59,7 @@ namespace StrongProxy
 
         private void SettingButton_Click(object sender, RoutedEventArgs e)
         {
-            var setting = new ProxyServerSettingDialog();
+            ProxyServerSettingDialog setting = new ProxyServerSettingDialog();
 
             setting.Owner = this;
             setting.ShowDialog();
@@ -69,7 +69,7 @@ namespace StrongProxy
         {
             if (IsAdministrator())
             {
-                var status = SchoolFunction();
+                bool status = SchoolFunction();
                 if (status)
                 {
                     SchoolSuccessIcon.Visibility = Visibility.Visible;
@@ -88,7 +88,7 @@ namespace StrongProxy
 
                     //if (result == MessageBoxResult.Yes)
                     //{
-                    //    var setting = new ProxyServerSettingDialog();
+                    //    
 
                     //    setting.Owner = this;
                     //    setting.ShowDialog();
@@ -106,7 +106,7 @@ namespace StrongProxy
         {
             if (IsAdministrator())
             {
-                var status = HomeFunction();
+                bool status = HomeFunction();
                 if (status)
                 {
                     HomeSuccessIcon.Visibility = Visibility.Visible;
@@ -122,10 +122,6 @@ namespace StrongProxy
                 else
                 {
                     MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    var setting = new ProxyServerSettingDialog();
 
                     //    setting.Owner = this;
                     //    setting.ShowDialog();
@@ -146,11 +142,9 @@ namespace StrongProxy
 
         private bool SchoolFunction()
         {
-            var setting = ReadSetting();
-            var staticIP = ReadStaticIP();
-            bool isDisableProxy = false;
+            StaticIP staticIP = ReadStaticIP();
             bool isSetIP = false;
-            isDisableProxy = DisableProxy();
+            bool isDisableProxy = DisableProxy();
             if (staticIP != null)
             {
                 isSetIP = SetStaticIP(Constant.WIFI_ADAPTER_NAME, staticIP.IP, staticIP.SubnetMask, staticIP.Gateway, staticIP.DNS1, staticIP.DNS2);
@@ -165,7 +159,7 @@ namespace StrongProxy
             bool isSetProxy = false;
             if (setting != null)
             {
-                isSetProxy = SetProxy(Constant.FAKE_PROXY_SERVER, setting.URLList);
+                isSetProxy = SetProxy(setting.ProxyServer, setting.URLList);
             }
             bool isSetDHCP = SetDHCP(Constant.WIFI_ADAPTER_NAME);
             return isSetProxy && isSetDHCP;
@@ -197,6 +191,7 @@ namespace StrongProxy
             }
             catch (Exception ex)
             {
+                log.Error(ex.StackTrace);
                 return false;
             }
         }
@@ -285,13 +280,13 @@ namespace StrongProxy
         private StaticIP ReadStaticIP()
         {
             StaticIP staticIP = null;
-            var file = Constant.STATIC_IP_PATH;
+            string file = Constant.STATIC_IP_PATH;
             if (File.Exists(file) != false)
             {
-                using (var reader = new StreamReader(file))
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                using (StreamReader reader = new StreamReader(file))
+                using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    var records = csv.GetRecords<StaticIP>();
+                    IEnumerable<StaticIP> records = csv.GetRecords<StaticIP>();
                     staticIP = records.FirstOrDefault(x => x.PCName.ToUpper() == Environment.MachineName.ToUpper());
                 }
             }
@@ -301,14 +296,14 @@ namespace StrongProxy
         public static bool IsAdministrator()
         {
             return true;
-            var identity = WindowsIdentity.GetCurrent();
-            var principal = new WindowsPrincipal(identity);
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 
         private AppData GetAppData()
         {
-            var appData = new AppData();
+            AppData appData = new AppData();
             using (StreamReader r = new StreamReader(Constant.APP_DATA_PATH))
             {
                 string json = r.ReadToEnd();
