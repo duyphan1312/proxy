@@ -393,5 +393,10 @@ namespace ProxySetting
 
             return true;
         }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }
