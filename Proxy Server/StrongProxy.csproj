@@ -187,6 +187,8 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Resource Include="Assets\Image\ProxyIcon.png" />
+    <Resource Include="Assets\Image\Proxy_03.png" />
+    <Resource Include="Assets\Image\Proxy_05.png" />
     <Content Include="StaticIPList.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -197,9 +199,7 @@
   <ItemGroup>
     <Resource Include="Assets\Image\Background.png" />
     <Resource Include="Assets\Image\ExitButton.png" />
-    <Resource Include="Assets\Image\Home.png" />
     <Resource Include="Assets\Image\Proxy_check.png" />
-    <Resource Include="Assets\Image\School.png" />
     <Resource Include="Assets\Image\SettingButton.png" />
     <Resource Include="Assets\Image\Tick.png" />
     <Resource Include="Assets\Image\Title.png" />

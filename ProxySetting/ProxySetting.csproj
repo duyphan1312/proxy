@@ -126,16 +126,10 @@
     <Resource Include="Assets\Image\ExitButton.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Image\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\Image\Proxy_check.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Image\ProxyIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Image\School.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Image\SettingButton.png" />

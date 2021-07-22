@@ -48,7 +48,7 @@
 
         public const string DISPLAY_ERROR_URLLIST = "ドメインリストの値エラー。";
 
-        public const string DISPLAY_ERROR_LABEL = "The Value Can Only Contain Up To 6 Characters";
+        public const string DISPLAY_ERROR_LABEL = "6文字以内で入力してください。";
 
         public const string DISPLAY_ERROR_VALUE = "ファイルにProxyサーバーとドメインリストの値が含まれていません。";
 

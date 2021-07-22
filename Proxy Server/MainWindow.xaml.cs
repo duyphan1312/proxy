@@ -84,15 +84,15 @@ namespace StrongProxy
                 }
                 else
                 {
-                    MessageBoxResult result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        ProxyServerSettingDialog setting = new ProxyServerSettingDialog();
+                    //if (result == MessageBoxResult.Yes)
+                    //{
+                    //    
 
-                        setting.Owner = this;
-                        setting.ShowDialog();
-                    }
+                    //    setting.Owner = this;
+                    //    setting.ShowDialog();
+                    //}
                 }
             }
             else
@@ -121,15 +121,11 @@ namespace StrongProxy
                 }
                 else
                 {
-                    MessageBoxResult result = MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        ProxyServerSettingDialog setting = new ProxyServerSettingDialog();
-
-                        setting.Owner = this;
-                        setting.ShowDialog();
-                    }
+                    //    setting.Owner = this;
+                    //    setting.ShowDialog();
+                    //}
                 }
             }
             else
