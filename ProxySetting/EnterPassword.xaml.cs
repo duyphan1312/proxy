@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IniParser;
+using IniParser.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,16 +28,20 @@ namespace ProxySetting
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            INIFILE inif = new INIFILE("config.ini");
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("config.ini");
 
-            string password = inif.GetValue("Password", "pass", "null");
+            string password = data["Password"]["pass"];
 
             if (string.Compare(txtPassword.Text, EncryptPassword.Decrypt(password)) == 0)
             {
                 ProxyServerSettingDialog setting = new ProxyServerSettingDialog();
 
+                this.Hide();
+
                 setting.Owner = this;
-                setting.ShowDialog();
+
+                setting.Show();
             }
             else
             {

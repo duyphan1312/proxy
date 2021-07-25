@@ -26,35 +26,6 @@ namespace ProxySetting
             InitializeComponent();
         }
 
-         private bool CheckExitsPassword()
-        {
-            INIFILE inif = new INIFILE("config.ini");
-
-            if (!string.IsNullOrEmpty(inif.GetValue("Password", "pass", "null")))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private void Password()
-        {
-            if (CheckExitsPassword())
-            {
-                EnterPassword password = new EnterPassword();
-
-                password.Owner = this;
-                password.ShowDialog();
-            }
-            else
-            {
-                PasswordSetting password = new PasswordSetting();
-
-                password.Owner = this;
-                password.ShowDialog();
-            }
-        }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -72,10 +43,12 @@ namespace ProxySetting
 
                     MessageBox.Show("" + StrongProxy.Constant.DISPLAY_SUCCESS_SETTINGPASSWORD, "" + StrongProxy.Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    EnterPassword password = new EnterPassword();
+                    ProxyServerSettingDialog password = new ProxyServerSettingDialog();
+
+                    this.Hide();
 
                     password.Owner = this;
-                    password.ShowDialog();
+                    password.Show();
                 }
                 else
                 {

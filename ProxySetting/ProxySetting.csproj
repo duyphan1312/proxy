@@ -87,7 +87,6 @@
     <Compile Include="EnterPassword.xaml.cs">
       <DependentUpon>EnterPassword.xaml</DependentUpon>
     </Compile>
-    <Compile Include="INIFile.cs" />
     <Compile Include="PasswordSetting.xaml.cs">
       <DependentUpon>PasswordSetting.xaml</DependentUpon>
     </Compile>
