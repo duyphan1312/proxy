@@ -16,6 +16,12 @@
 
         //public const string DISPLAY_ERROR_BUTTON = "Please Enter Settings For Proxy Server";
 
+        //public const string DISPLAY_ERROR_REPASSWORD = "Incorrect Repassword.";
+
+        //public const string DISPLAY_ERROR_PASSWORD = "Incorrect Password.";
+
+        //public const string DISPLAY_ERROR_EMPTYPASSWORD = "Password Is Not Allowed Empty.";       
+
         //public const string ERROR = "ERROR";
 
         //public const string NOTIFICATION = "NOTIFICATION";
@@ -23,6 +29,8 @@
         //public const string DISPLAY_SUCCESS_SAVE = "Successfully Saved Settings";
 
         //public const string DISPLAY_SUCCESS_CONNECT = "Successfully Connected";
+
+        //public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Password Setting Successful";
 
         //public const string QUESTION = "QUESTION";
 
@@ -56,6 +64,12 @@
 
         public const string DISPLAY_ERROR_BUTTON = "Proxyサーバーの設定を入力してください。";
 
+        public const string DISPLAY_ERROR_REPASSWORD = "Incorrect Repassword.";
+
+        public const string DISPLAY_ERROR_PASSWORD = "Incorrect Password.";
+
+        public const string DISPLAY_ERROR_EMPTYPASSWORD = "Password Is Not Allowed Empty.";
+
         public const string ERROR = "エラー";
 
         public const string NOTIFICATION = "通知";
@@ -63,6 +77,8 @@
         public const string DISPLAY_SUCCESS_SAVE = "設定は正常に保存されました。";
 
         public const string DISPLAY_SUCCESS_CONNECT = "接続済み";
+
+        public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Password Setting Successful";
 
         public const string QUESTION = "質問";
 
