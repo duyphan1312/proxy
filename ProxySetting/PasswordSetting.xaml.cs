@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IniParser;
+using IniParser.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,12 +62,13 @@ namespace ProxySetting
             {
                 if (CheckRePassword())
                 {
-
-                    INIFILE inif = new INIFILE("config.ini");
+                    var parser = new FileIniDataParser();
+                    IniData data = parser.ReadFile("config.ini");
 
                     string encrypt = EncryptPassword.Encrypt(txtPassword.Text);
 
-                    inif.SetValue("Password", "pass", encrypt);
+                    data["Password"]["pass"] = encrypt;
+                    parser.WriteFile("config.ini", data);
 
                     MessageBox.Show("" + StrongProxy.Constant.DISPLAY_SUCCESS_SETTINGPASSWORD, "" + StrongProxy.Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
 
