@@ -35,7 +35,7 @@ namespace ProxySetting
 
             string password = data["Password"]["pass"];
 
-            if (string.Compare(txtPassword.Text, EncryptPassword.Decrypt(password)) == 0)
+            if (string.Compare(txtPassword.Password.ToString(), EncryptPassword.Decrypt(password)) == 0)
             {
                 ProxyServerSettingDialog setting = new ProxyServerSettingDialog();
 
@@ -54,6 +54,12 @@ namespace ProxySetting
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtPassword.Focusable = true;
+            txtPassword.Focus();
         }
     }
 }
