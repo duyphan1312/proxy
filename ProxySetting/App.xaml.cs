@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IniParser;
+using IniParser.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,36 @@ namespace ProxySetting
     /// </summary>
     public partial class App : Application
     {
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            //add some bootstrap or startup logic 
+            if (CheckExitsPassword())
+            {
+                EnterPassword password = new EnterPassword();
+
+                password.Show();
+            }
+            else
+            {
+                PasswordSetting password = new PasswordSetting();
+
+                password.Show();
+            }
+        }
+
+        private bool CheckExitsPassword()
+        {
+            var file = StrongProxy.Constant.CONFIG_PATH;
+
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(file);
+
+            if (!string.IsNullOrEmpty(data["Password"]["pass"]))
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

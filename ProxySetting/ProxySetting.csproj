@@ -33,9 +33,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CsvHelper, Version=27.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.27.1.1\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -77,6 +83,13 @@
     <Compile Include="Controls\TextBoxIP.xaml.cs">
       <DependentUpon>TextBoxIP.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EncryptPassword.cs" />
+    <Compile Include="EnterPassword.xaml.cs">
+      <DependentUpon>EnterPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordSetting.xaml.cs">
+      <DependentUpon>PasswordSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProxyServerSettingDialog.xaml.cs">
       <DependentUpon>ProxyServerSettingDialog.xaml</DependentUpon>
     </Compile>
@@ -100,6 +113,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="config.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,6 +128,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\TextBoxIP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EnterPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PasswordSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

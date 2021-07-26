@@ -16,6 +16,12 @@
 
         //public const string DISPLAY_ERROR_BUTTON = "Please Enter Settings For Proxy Server";
 
+        //public const string DISPLAY_ERROR_REPASSWORD = "Confirm Password Does Not Match.";
+
+        //public const string DISPLAY_ERROR_PASSWORD = "Incorrect Password.";
+
+        //public const string DISPLAY_ERROR_EMPTYPASSWORD = "Password Is Not Allow Empty.";       
+
         //public const string ERROR = "ERROR";
 
         //public const string NOTIFICATION = "NOTIFICATION";
@@ -24,9 +30,13 @@
 
         //public const string DISPLAY_SUCCESS_CONNECT = "Successfully Connected";
 
+        //public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Successfully Password Settings";
+
         //public const string QUESTION = "QUESTION";
 
         //public const string DISPLAY_QUESTION_SAVE = "Do You Want To Save It?";
+
+        //public const string CONFIG_PATH = "config.ini";
 
         //public const string SETTING_PATH = @"ProxySetting.csv";
 
@@ -56,6 +66,12 @@
 
         public const string DISPLAY_ERROR_BUTTON = "Proxyサーバーの設定を入力してください。";
 
+        public const string DISPLAY_ERROR_REPASSWORD = "パスワードが一致しませんでした。";
+
+        public const string DISPLAY_ERROR_PASSWORD = "パスワードが正しくありません。入力し直してください。";
+
+        public const string DISPLAY_ERROR_EMPTYPASSWORD = "パスワードが必要です。";
+
         public const string ERROR = "エラー";
 
         public const string NOTIFICATION = "通知";
@@ -64,9 +80,13 @@
 
         public const string DISPLAY_SUCCESS_CONNECT = "接続済み";
 
+        public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "パスワード設定がされました";
+
         public const string QUESTION = "質問";
 
         public const string DISPLAY_QUESTION_SAVE = "変更内容を保存しますか？";
+
+        public const string CONFIG_PATH = "config.ini";
 
         public const string SETTING_PATH = @"ProxySetting.csv";
 

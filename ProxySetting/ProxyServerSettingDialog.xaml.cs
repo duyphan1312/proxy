@@ -33,6 +33,8 @@ namespace ProxySetting
 
         private void ProxyServerSettingDialog_Loaded(object sender, RoutedEventArgs e)
         {
+            //Password();
+
             var file = StrongProxy.Constant.SETTING_PATH;
 
             if (File.Exists(file) == false)
