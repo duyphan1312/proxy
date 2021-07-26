@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProxySetting"
         xmlns:control="clr-namespace:ProxySetting.Controls"
         mc:Ignorable="d"
-        Title="PROXY SETTING" Height="500" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
+        Title="PROXY SETTING" Height="480" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="Pink" />
@@ -51,8 +51,8 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Proxy サーバ: "/>
-                <control:TextBoxIP Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="-24,10,100,10" Height="40" FontSize="18" x:Name="txtProxyServer" />
-                
+                <control:TextBoxIP Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="-24,10,115,10" Height="40" FontSize="18" x:Name="txtProxyServer" />
+
                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="10" FontWeight="Bold" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center" Text="ドメインリスト:"/>
                 <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  Margin="10" Height="90" FontSize="18" Name="txtURLList"
                              AcceptsReturn="True" TextWrapping="Wrap"
@@ -67,18 +67,16 @@
                 <TextBox   Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontSize="18" x:Name="txtSchoolLabel" MaxLength="6"/>
 
                 <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">
-                    <Button Content="インポート" Width="120" Height="35" Margin="5,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
+                    <Button Content="インポート" Width="120" Height="35" Margin="5,10,0,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
                     </Button>
-                    <Button Content="エクスポート" Width="120" Height="35" Margin="5,20,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" FontSize="14" FontWeight="Bold" Click="ExportButton_Click"/>
+                    <Button Content="エクスポート" Width="120" Height="35" Margin="20,10,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" FontSize="14" FontWeight="Bold" Click="ExportButton_Click"/>
                 </StackPanel>
-                
-                <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Content="保存" Width="120" Height="35" Margin="5,20,20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click">
-                    </Button>
-                    <Button Content="キャンセル" Width="120" Height="35" Margin="20,20,5,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="CancelButton" IsCancel="True" FontSize="14" FontWeight="Bold" x:Name="btnCancel" Click="btnCancel_Click">
-                    </Button>
+
+                <StackPanel Margin="20 0 0 0" Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" RenderTransformOrigin="0.545,0.533">
+                    <Button Content="保存" Width="120" Height="35" Margin="5,5,-20,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="SaveButton" x:Name="SaveButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="SaveButton_Click"/>
+                    <Button Content="キャンセル" Width="120" Height="35" Margin="43,5,0,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="CancelButton" IsCancel="True" FontSize="14" FontWeight="Bold" x:Name="btnCancel" Click="btnCancel_Click"/>
                 </StackPanel>
-                
+
             </Grid>
         </StackPanel>
     </Grid>

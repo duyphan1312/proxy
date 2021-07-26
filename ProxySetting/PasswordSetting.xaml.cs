@@ -33,24 +33,29 @@ namespace ProxySetting
             {
                 if (CheckRePassword())
                 {
-                    var file = StrongProxy.Constant.CONFIG_PATH;
+                    var result = System.Windows.MessageBox.Show("" + StrongProxy.Constant.DISPLAY_QUESTION_SAVE, "" + StrongProxy.Constant.QUESTION, MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-                    var parser = new FileIniDataParser();
-                    IniData data = parser.ReadFile(file);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        var file = StrongProxy.Constant.CONFIG_PATH;
 
-                    string encrypt = EncryptPassword.Encrypt(txtPassword.Password.ToString());
+                        var parser = new FileIniDataParser();
+                        IniData data = parser.ReadFile(file);
 
-                    data["Password"]["pass"] = encrypt;
-                    parser.WriteFile(file, data);
+                        string encrypt = EncryptPassword.Encrypt(txtPassword.Password.ToString());
 
-                    MessageBox.Show("" + StrongProxy.Constant.DISPLAY_SUCCESS_SETTINGPASSWORD, "" + StrongProxy.Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+                        data["Password"]["pass"] = encrypt;
+                        parser.WriteFile(file, data);
 
-                    ProxyServerSettingDialog password = new ProxyServerSettingDialog();
+                        MessageBox.Show("" + StrongProxy.Constant.DISPLAY_SUCCESS_SETTINGPASSWORD, "" + StrongProxy.Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    this.Hide();
+                        ProxyServerSettingDialog password = new ProxyServerSettingDialog();
 
-                    password.Owner = this;
-                    password.Show();
+                        this.Hide();
+
+                        password.Owner = this;
+                        password.Show();
+                    }
                 }
                 else
                 {
