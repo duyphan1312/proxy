@@ -28,8 +28,10 @@ namespace ProxySetting
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            var file = StrongProxy.Constant.CONFIG_PATH;
+
             var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("config.ini");
+            IniData data = parser.ReadFile(file);
 
             string password = data["Password"]["pass"];
 

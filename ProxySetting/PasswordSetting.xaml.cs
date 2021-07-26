@@ -33,13 +33,15 @@ namespace ProxySetting
             {
                 if (CheckRePassword())
                 {
+                    var file = StrongProxy.Constant.CONFIG_PATH;
+
                     var parser = new FileIniDataParser();
-                    IniData data = parser.ReadFile("config.ini");
+                    IniData data = parser.ReadFile(file);
 
                     string encrypt = EncryptPassword.Encrypt(txtPassword.Text);
 
                     data["Password"]["pass"] = encrypt;
-                    parser.WriteFile("config.ini", data);
+                    parser.WriteFile(file, data);
 
                     MessageBox.Show("" + StrongProxy.Constant.DISPLAY_SUCCESS_SETTINGPASSWORD, "" + StrongProxy.Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
 

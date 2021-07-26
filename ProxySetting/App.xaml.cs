@@ -34,8 +34,10 @@ namespace ProxySetting
 
         private bool CheckExitsPassword()
         {
+            var file = StrongProxy.Constant.CONFIG_PATH;
+
             var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("config.ini");
+            IniData data = parser.ReadFile(file);
 
             if (!string.IsNullOrEmpty(data["Password"]["pass"]))
             {
