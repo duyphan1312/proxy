@@ -38,7 +38,7 @@ namespace ProxySetting
                     var parser = new FileIniDataParser();
                     IniData data = parser.ReadFile(file);
 
-                    string encrypt = EncryptPassword.Encrypt(txtPassword.Text);
+                    string encrypt = EncryptPassword.Encrypt(txtPassword.Password.ToString());
 
                     data["Password"]["pass"] = encrypt;
                     parser.WriteFile(file, data);
@@ -70,7 +70,7 @@ namespace ProxySetting
 
         private bool CheckRePassword()
         {
-            if (string.Compare(txtPassword.Text, txtRePassword.Text) != 0)
+            if (string.Compare(txtPassword.Password.ToString(), txtRePassword.Password.ToString()) != 0)
             {
                 return false;
             }
@@ -80,12 +80,18 @@ namespace ProxySetting
 
         private bool CheckPassword()
         {
-            if (!string.IsNullOrEmpty(txtPassword.Text))
+            if (!string.IsNullOrEmpty(txtPassword.Password.ToString()))
             {
                 return true;
             }
 
             return false;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtPassword.Focusable = true;
+            txtPassword.Focus();
         }
     }
 }

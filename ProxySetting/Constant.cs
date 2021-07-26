@@ -2,19 +2,19 @@
 {
     public class Constant
     {
-        //public const string DISPLAY_ERROR_PROXYSERVER = "The Value Of Proxy Server Error!";
+        //public const string DISPLAY_ERROR_PROXYSERVER = "The Value Of Proxy Server Error.";
 
-        //public const string DISPLAY_ERROR_IP = "Please Specify A Value Between 0 And 255";
+        //public const string DISPLAY_ERROR_IP = "Please Specify A Value Between 0 And 255.";
 
-        //public const string DISPLAY_ERROR_URLLIST = "The Value Of URL List Error!";
+        //public const string DISPLAY_ERROR_URLLIST = "The Value Of URL List Error.";
 
-        //public const string DISPLAY_ERROR_LABEL = "The Value Can Only Contain Up To 6 Characters";
+        //public const string DISPLAY_ERROR_LABEL = "The Value Can Only Contain Up To 6 Characters.";
 
-        //public const string DISPLAY_ERROR_VALUE = "File Does Not Contain Values ​Of Proxy Server And URL List";
+        //public const string DISPLAY_ERROR_VALUE = "File Does Not Contain Values ​Of Proxy Server And URL List.";
 
-        //public const string DISPLAY_ERROR_FILE = "Please Choose The Correct File Format";
+        //public const string DISPLAY_ERROR_FILE = "Please Choose The Correct File Format.";
 
-        //public const string DISPLAY_ERROR_BUTTON = "Please Enter Settings For Proxy Server";
+        //public const string DISPLAY_ERROR_BUTTON = "Please Enter Settings For Proxy Server.";
 
         //public const string DISPLAY_ERROR_REPASSWORD = "Confirm Password Does Not Match.";
 
@@ -28,9 +28,9 @@
 
         //public const string DISPLAY_SUCCESS_SAVE = "Successfully Saved Settings";
 
-        //public const string DISPLAY_SUCCESS_CONNECT = "Successfully Connected";
+        //public const string DISPLAY_SUCCESS_CONNECT = "Successfully Connected.";
 
-        //public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Successfully Password Settings";
+        //public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Successfully Password Settings.";
 
         //public const string QUESTION = "QUESTION";
 
@@ -78,9 +78,9 @@
 
         public const string DISPLAY_SUCCESS_SAVE = "設定は正常に保存されました。";
 
-        public const string DISPLAY_SUCCESS_CONNECT = "接続済み";
+        public const string DISPLAY_SUCCESS_CONNECT = "接続済み。";
 
-        public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "パスワード設定がされました";
+        public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "パスワードは設定されました。";
 
         public const string QUESTION = "質問";
 
