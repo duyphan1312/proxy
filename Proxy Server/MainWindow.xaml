@@ -7,7 +7,7 @@
         xmlns:Controls="clr-namespace:StrongProxy.Controls"
         x:Class="StrongProxy.MainWindow"
         mc:Ignorable="d"
-        Title="STRONG PROXY" TextBlock.TextAlignment="Center" Height="760" Width="1280"  WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" Icon="Assets/Image/ProxyIcon.png">
+        Title="STRONG PROXY" Height="760" Width="1280"  WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ConnectButton">
             <Setter Property="Background" Value="White" />

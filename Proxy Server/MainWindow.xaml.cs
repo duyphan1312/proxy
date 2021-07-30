@@ -69,8 +69,27 @@ namespace StrongProxy
         {
             if (IsAdministrator())
             {
-                bool status = SchoolFunction();
-                if (status)
+                //bool status = SchoolFunction();
+
+                StaticIP staticIP = ReadStaticIP();
+                bool isSetIP = false;
+                bool isDisableProxy = DisableProxy();
+
+                if (!isDisableProxy)
+                {
+                    MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                if (staticIP != null)
+                {
+                    isSetIP = SetStaticIP(Constant.WIFI_ADAPTER_NAME, staticIP.IP, staticIP.SubnetMask, staticIP.Gateway, staticIP.DNS1, staticIP.DNS2);
+                }
+                else
+                {
+                    MessageBox.Show("" + Constant.DISPLAY_ERROR_NAMEPC, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                if (isDisableProxy && isSetIP)
                 {
                     SchoolSuccessIcon.Visibility = Visibility.Visible;
                     HomeSuccessIcon.Visibility = Visibility.Collapsed;
@@ -82,24 +101,11 @@ namespace StrongProxy
 
                     SetAppData(new AppData() { IsHome = false, IsSchool = true });
                 }
-                else
-                {
-                    MessageBox.Show("" + Constant.DISPLAY_ERROR_BUTTON, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    //if (result == MessageBoxResult.Yes)
-                    //{
-                    //    
-
-                    //    setting.Owner = this;
-                    //    setting.ShowDialog();
-                    //}
-                }
             }
             else
             {
                 MessageBox.Show(Constant.DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
@@ -130,7 +136,7 @@ namespace StrongProxy
             }
             else
             {
-                MessageBox.Show(Constant.DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("" + Constant.DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }
@@ -148,6 +154,10 @@ namespace StrongProxy
             if (staticIP != null)
             {
                 isSetIP = SetStaticIP(Constant.WIFI_ADAPTER_NAME, staticIP.IP, staticIP.SubnetMask, staticIP.Gateway, staticIP.DNS1, staticIP.DNS2);
+            }
+            else
+            {
+                MessageBox.Show("" + Constant.DISPLAY_ERROR_NAMEPC, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return isDisableProxy && isSetIP;

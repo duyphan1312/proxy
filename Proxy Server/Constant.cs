@@ -22,6 +22,8 @@
 
         //public const string DISPLAY_ERROR_EMPTYPASSWORD = "Password Is Not Allow Empty.";       
 
+        //public const string DISPLAY_ERROR_NAMEPC = "Please Enter Network That You Use At School.";
+
         //public const string ERROR = "ERROR";
 
         //public const string NOTIFICATION = "NOTIFICATION";
@@ -71,6 +73,8 @@
         public const string DISPLAY_ERROR_PASSWORD = "パスワードが正しくありません。入力し直してください。";
 
         public const string DISPLAY_ERROR_EMPTYPASSWORD = "パスワードが必要です。";
+
+        public const string DISPLAY_ERROR_NAMEPC = "学校内で使用するネットワークの設定を入力してください。";
 
         public const string ERROR = "エラー";
 
