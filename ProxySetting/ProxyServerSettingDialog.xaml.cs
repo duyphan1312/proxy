@@ -41,6 +41,11 @@ namespace ProxySetting
             {
                 StreamWriter stream = File.CreateText(file);
                 stream.Close();
+                txtProxyServer.firstBox.Text = "127";
+                txtProxyServer.secondBox.Text = "0";
+                txtProxyServer.thirdBox.Text = "0";
+                txtProxyServer.fourthBox.Text = "1";
+                txtProxyServer.fivethBox.Text = "8080";
             }
 
             using (var reader = new StreamReader(file))
@@ -52,7 +57,6 @@ namespace ProxySetting
 
                 if (setting != null)
                 {
-
                     string[] proxyServer = setting.ProxyServer.Split('.', ':');
                     if (proxyServer.Length >= 5)
                     {
@@ -65,6 +69,14 @@ namespace ProxySetting
                         txtHomeLabel.Text = setting.HomeLabel;
                         txtSchoolLabel.Text = setting.SchoolLabel;
                     }
+                }
+                else
+                {
+                    txtProxyServer.firstBox.Text = "127";
+                    txtProxyServer.secondBox.Text = "0";
+                    txtProxyServer.thirdBox.Text = "0";
+                    txtProxyServer.fourthBox.Text = "1";
+                    txtProxyServer.fivethBox.Text = "8080";
                 }
 
                 reader.Close();
@@ -401,6 +413,14 @@ namespace ProxySetting
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void ChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            PasswordSetting setting = new PasswordSetting();
+
+            setting.Owner = this;
+            setting.ShowDialog();
         }
     }
 }
