@@ -34,6 +34,7 @@ namespace StrongProxy
             AppData appData = GetAppData();
             if (IsEnableProxy() && appData!= null && appData.IsHome)
             {
+                HomeFunction();
                 HomeSuccessIcon.Visibility = Visibility.Visible;
             }
 
