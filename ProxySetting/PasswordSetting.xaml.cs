@@ -70,7 +70,7 @@ namespace ProxySetting
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            this.Close();
         }
 
         private bool CheckRePassword()
