@@ -130,7 +130,7 @@ namespace StrongProxy
             }
             else
             {
-                MessageBox.Show(Constant.DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("" + Constant.DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE, "" + Constant.NOTIFICATION, MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }
@@ -148,6 +148,10 @@ namespace StrongProxy
             if (staticIP != null)
             {
                 isSetIP = SetStaticIP(Constant.WIFI_ADAPTER_NAME, staticIP.IP, staticIP.SubnetMask, staticIP.Gateway, staticIP.DNS1, staticIP.DNS2);
+            }
+            else
+            {
+                MessageBox.Show("" + Constant.DISPLAY_ERROR_NAMEPC, "" + Constant.ERROR, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return isDisableProxy && isSetIP;

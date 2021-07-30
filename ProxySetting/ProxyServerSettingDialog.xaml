@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProxySetting"
         xmlns:control="clr-namespace:ProxySetting.Controls"
         mc:Ignorable="d"
-        Title="PROXY SETTING" TextBlock.TextAlignment="Center" Height="480" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
+        Title="PROXY SETTING" Height="480" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="Pink" />
