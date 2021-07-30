@@ -30,7 +30,7 @@
 
         //public const string DISPLAY_SUCCESS_CONNECT = "Successfully Connected.";
 
-        //public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Successfuly Password Settings.";
+        //public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "Password has been changed.";
 
         //public const string QUESTION = "QUESTION";
 
@@ -80,7 +80,7 @@
 
         public const string DISPLAY_SUCCESS_CONNECT = "接続済み。";
 
-        public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "パスワードは設定されました。";
+        public const string DISPLAY_SUCCESS_SETTINGPASSWORD = "パスワードが正常に変更されました。";
 
         public const string QUESTION = "質問";
 

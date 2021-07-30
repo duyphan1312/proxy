@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProxySetting"
         xmlns:control="clr-namespace:ProxySetting.Controls"
         mc:Ignorable="d"
-        Title="PROXY SETTING" Height="480" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
+        Title="PROXY SETTING" TextBlock.TextAlignment="Center" Height="480" Width="620" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" FontSize="14" FontFamily="Times New Roman" Icon="Assets/Image/ProxyIcon.png">
     <Window.Resources>
         <Style TargetType="Button" x:Key="ButtonStyle">
             <Setter Property="Background" Value="Pink" />
@@ -67,6 +67,8 @@
                 <TextBox   Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Margin="10" Height="40" TextWrapping="Wrap" FontSize="18" x:Name="txtSchoolLabel" MaxLength="6"/>
 
                 <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 0 10">
+                    <Button Content="パスワード変更" Width="120" Height="35" Margin="10,10,18,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ChangePassword" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ChangePassword_Click">
+                    </Button>
                     <Button Content="インポート" Width="120" Height="35" Margin="5,10,0,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ImportButton" x:Name="ImportButton" IsDefault="True" FontSize="14" FontWeight="Bold" Click="ImportButton_Click">
                     </Button>
                     <Button Content="エクスポート" Width="120" Height="35" Margin="20,10,10,5" Style="{StaticResource ButtonStyle}" AutomationProperties.Name="ExportButton" x:Name="ExportButton" FontSize="14" FontWeight="Bold" Click="ExportButton_Click"/>
