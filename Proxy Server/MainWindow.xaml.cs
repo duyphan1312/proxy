@@ -4,12 +4,15 @@ using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -22,6 +25,7 @@ namespace StrongProxy
     {
         [DllImport("wininet.dll")]
         public static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer, int dwBufferLength);
+        static HttpClient client = new HttpClient();
 
         public const int INTERNET_OPTION_SETTINGS_CHANGED = 39;
         public const int INTERNET_OPTION_REFRESH = 37;
@@ -32,6 +36,7 @@ namespace StrongProxy
         {
             InitializeComponent();
             AppData appData = GetAppData();
+            UpdateSettingFromAPI();
             if (IsEnableProxy() && appData!= null && appData.IsHome)
             {
                 HomeFunction();
@@ -145,6 +150,38 @@ namespace StrongProxy
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+
+        private void UpdateSettingFromAPI()
+        {
+            try
+            {
+                string apiUrl = ConfigurationManager.AppSettings["APIServer"];
+                HttpResponseMessage response = client.GetAsync(apiUrl).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = response.Content.ReadAsStringAsync().Result;
+                    ProxySetting proxySetting = JsonConvert.DeserializeObject<ProxySetting>(jsonResponse);
+
+                    StreamWriter writer = new StreamWriter(Constant.SETTING_PATH);
+
+                    CsvWriter csv = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                    {
+                        csv.WriteHeader<ProxySetting>();
+                        csv.NextRecord();
+
+                        csv.WriteRecord(proxySetting);
+                        csv.NextRecord();
+                    }
+
+                    writer.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.StackTrace);
+            }
+            
         }
 
         private bool SchoolFunction()
