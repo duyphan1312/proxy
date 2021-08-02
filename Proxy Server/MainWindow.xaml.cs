@@ -53,11 +53,25 @@ namespace StrongProxy
             {
                 if (!string.IsNullOrEmpty(setting.HomeLabel))
                 {
-                    txtHomeLabel.Text = setting.HomeLabel;
+                    if (setting.HomeLabel.Length <= 6)
+                    {
+                        txtHomeLabel.Text = setting.HomeLabel;
+                    }
+                    else
+                    {
+                        txtHomeLabel.Text = setting.HomeLabel.Substring(0, 6);
+                    }
                 }
                 if (!string.IsNullOrEmpty(setting.SchoolLabel))
                 {
-                    txtSchoolLabel.Text = setting.SchoolLabel;
+                    if (setting.SchoolLabel.Length <= 6)
+                    {
+                        txtSchoolLabel.Text = setting.SchoolLabel;
+                    }
+                    else
+                    {
+                        txtSchoolLabel.Text = setting.SchoolLabel.Substring(0, 6);
+                    }
                 }
             }
             
