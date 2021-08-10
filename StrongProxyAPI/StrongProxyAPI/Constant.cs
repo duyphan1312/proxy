@@ -8,5 +8,6 @@ namespace StrongProxyAPI
     public class Constant
     {
         public const string SETTING_PATH = @"C:\StrongProxy\ProxySetting.csv";
+        public const string STATIC_IP_PATH = @"C:\StrongProxy\StaticIPList.csv";
     }
 }

@@ -37,6 +37,7 @@ namespace StrongProxy
             InitializeComponent();
             AppData appData = GetAppData();
             UpdateSettingFromAPI();
+            UpdateStaticIPFromAPI();
             if (IsEnableProxy() && appData!= null && appData.IsHome)
             {
                 HomeFunction();
@@ -170,7 +171,7 @@ namespace StrongProxy
         {
             try
             {
-                string apiUrl = ConfigurationManager.AppSettings["APIServer"];
+                string apiUrl = ConfigurationManager.AppSettings["APIServer"] + Constant.URL_PROXY_SETTING;
                 HttpResponseMessage response = client.GetAsync(apiUrl).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -196,6 +197,40 @@ namespace StrongProxy
                 log.Error(ex.StackTrace);
             }
             
+        }
+
+        private void UpdateStaticIPFromAPI()
+        {
+            try
+            {
+                string apiUrl = ConfigurationManager.AppSettings["APIServer"] + Constant.URL_STATIC_IP;
+                HttpResponseMessage response = client.GetAsync(apiUrl).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = response.Content.ReadAsStringAsync().Result;
+                    List<StaticIP> staticIPList = JsonConvert.DeserializeObject<List<StaticIP>>(jsonResponse);
+
+                    StreamWriter writer = new StreamWriter(Constant.STATIC_IP_PATH);
+
+                    CsvWriter csv = new CsvWriter(writer, CultureInfo.CurrentCulture);
+                    {
+                        csv.WriteHeader<ProxySetting>();
+                        csv.NextRecord();
+                        foreach (var item in staticIPList)
+                        {
+                            csv.WriteRecord(item);
+                            csv.NextRecord();
+                        }
+                    }
+
+                    writer.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex.StackTrace);
+            }
+
         }
 
         private bool SchoolFunction()
