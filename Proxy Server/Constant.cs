@@ -106,5 +106,9 @@
 
         public const string DISPLAY_REQUIRED_ADMIN_ROLE_MESSAGE = "このアプリは、管理者として実行する必要があります。";
 
+        public const string URL_PROXY_SETTING = "ProxySetting";
+
+        public const string URL_STATIC_IP = "StaticIP";
+
     }
 }
