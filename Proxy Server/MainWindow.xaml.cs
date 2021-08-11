@@ -214,7 +214,7 @@ namespace StrongProxy
 
                     CsvWriter csv = new CsvWriter(writer, CultureInfo.CurrentCulture);
                     {
-                        csv.WriteHeader<ProxySetting>();
+                        csv.WriteHeader<StaticIP>();
                         csv.NextRecord();
                         foreach (var item in staticIPList)
                         {
@@ -359,35 +359,51 @@ namespace StrongProxy
 
         private ProxySetting ReadSetting()
         {
-            ProxySetting setting = null;
-            string file = Constant.SETTING_PATH;
-            if (File.Exists(file))
+            try
             {
-                using (StreamReader reader = new StreamReader(file))
-                using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                ProxySetting setting = null;
+                string file = Constant.SETTING_PATH;
+                if (File.Exists(file))
                 {
-                    IEnumerable<ProxySetting> records = csv.GetRecords<ProxySetting>();
+                    using (StreamReader reader = new StreamReader(file))
+                    using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    {
+                        IEnumerable<ProxySetting> records = csv.GetRecords<ProxySetting>();
 
-                    setting = records.FirstOrDefault();
+                        setting = records.FirstOrDefault();
+                    }
                 }
+                return setting;
             }
-            return setting;
+            catch (Exception ex)
+            {
+                log.Error(ex.StackTrace);
+                return null;
+            }
         }
 
         private StaticIP ReadStaticIP()
         {
-            StaticIP staticIP = null;
-            string file = Constant.STATIC_IP_PATH;
-            if (File.Exists(file) != false)
+            try
             {
-                using (StreamReader reader = new StreamReader(file))
-                using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                StaticIP staticIP = null;
+                string file = Constant.STATIC_IP_PATH;
+                if (File.Exists(file) != false)
                 {
-                    IEnumerable<StaticIP> records = csv.GetRecords<StaticIP>();
-                    staticIP = records.FirstOrDefault(x => x.PCName.ToUpper() == Environment.MachineName.ToUpper());
+                    using (StreamReader reader = new StreamReader(file))
+                    using (CsvReader csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                    {
+                        IEnumerable<StaticIP> records = csv.GetRecords<StaticIP>();
+                        staticIP = records.FirstOrDefault(x => x.PCName.ToUpper() == Environment.MachineName.ToUpper());
+                    }
                 }
+                return staticIP;
             }
-            return staticIP;
+            catch (Exception ex)
+            {
+                log.Error(ex.StackTrace);
+                return null;
+            }
         }
 
         public static bool IsAdministrator()
