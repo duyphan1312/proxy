@@ -46,6 +46,7 @@ namespace StrongProxy
 
             if (!IsEnableProxy() && appData != null && appData.IsSchool)
             {
+                SchoolFunction();
                 SchoolSuccessIcon.Visibility = Visibility.Visible;
             }
 
