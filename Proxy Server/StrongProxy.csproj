@@ -190,6 +190,7 @@
     <Resource Include="Assets\Image\School.png" />
     <Resource Include="Assets\Image\Home.png" />
     <Resource Include="Assets\Image\LogoPanel.png" />
+    <Resource Include="Assets\Image\CloseButton.png" />
     <Content Include="StaticIPList.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
