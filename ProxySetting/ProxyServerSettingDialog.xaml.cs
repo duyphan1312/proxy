@@ -370,9 +370,13 @@ namespace ProxySetting
 
                 foreach (var item in arrListURL)
                 {
-                    var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{2})";
+                    string charSpecial= "$|&|+|,|:|;|=|?|@|#|||'|<|>|.|^|*|(|)|%|!|-|";
 
-                    Match match = Regex.Match(item, regex);
+                    var regex_first = @"^(http[s]?:\/\/|[a-z0-9]*\.[a-z]{3}\.[a-z]{2})([a-z0-9]*\.[a-z]{3})|([a-z0-9]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z0-9]+\.[a-z]{2})|";
+
+                    var regex_second = @"([a-z0-9|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]{4}\.[a-z|" + charSpecial + @"]{3})([a-z0-9|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]{4})|([a-z0-9|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]{4}\.[a-z|" + charSpecial + @"]{3})|([a-z|" + charSpecial + @"]+\.[a-z0-9|" + charSpecial + @"]{3})";
+
+                    Match match = Regex.Match(item, regex_first + regex_second);
 
                     if (match.Success)
                     {
@@ -387,9 +391,15 @@ namespace ProxySetting
             }
             else
             {
-                var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{2})";
+                string charSpecial = "$|&|+|,|:|;|=|?|@|#|||'|<|>|.|^|*|(|)|%|!|-|";
 
-                Match match = Regex.Match(input, regex);
+                //var regex = @"^(http[s]?:\/\/|[a-z]*\.[a-z]{3}\.[a-z]{2})([a-z]*\.[a-z]{3})|([a-z]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z]+\.[a-z]{2})";
+
+                var regex_first = @"^(http[s]?:\/\/|[a-z0-9]*\.[a-z]{3}\.[a-z]{2})([a-z0-9]*\.[a-z]{3})|([a-z0-9]*\.[a-z]*\.[a-z]{3}\.[a-z]{2})|([a-z0-9]+\.[a-z]{2})|";
+
+                var regex_second = @"([a-z0-9|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]{4}\.[a-z|" + charSpecial + @"]{3})([a-z0-9|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]{4})|([a-z0-9|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]*\.[a-z|" + charSpecial + @"]{4}\.[a-z|" + charSpecial + @"]{3})|([a-z|" + charSpecial + @"]+\.[a-z0-9|" + charSpecial + @"]{3})";
+
+                Match match = Regex.Match(input, regex_first + regex_second);
 
                 if (match.Success)
                 {
