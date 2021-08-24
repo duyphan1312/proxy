@@ -32,9 +32,12 @@ namespace StrongProxy
         public const int INTERNET_OPTION_PROXY_SETTINGS_CHANGED = 95;
 
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public MainWindow()
         {
             InitializeComponent();
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
+                return;
             AppData appData = GetAppData();
             UpdateSettingFromAPI();
             UpdateStaticIPFromAPI();
