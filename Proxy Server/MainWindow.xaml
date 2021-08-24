@@ -214,22 +214,36 @@
             <TextBlock FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"
                        x:Name="tbNofication" Visibility="Collapsed"></TextBlock>
         </Grid>
-        
-        <Grid Grid.Row="4">
+
+        <Grid Grid.Row="3" Margin="0,31,0,0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="197*"/>
                 <ColumnDefinition Width="439*"/>
             </Grid.ColumnDefinitions>
+
             <Button x:Name="ExitButton" Width="300" Height="70"  Grid.Row="0" Grid.Column="0"
                     Style="{StaticResource CloseBtn}" HorizontalAlignment="Left" Margin="30,18,0,18" Click="ExitButton_Click">
                 <Image Source="Assets/Image/ExitButton.png" Stretch="Fill"/>
             </Button>
-            <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
-                <Image></Image>
-                <Button x:Name="SettingButton" Click="SettingButton_Click" Width="300" Height="70" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SettingBtn}" Margin="9,0,50,0">
-                    <Image Source="Assets/Image/SettingButton.png" Stretch="Fill"/>
-                </Button>
-            </StackPanel>-->
+
+            <StackPanel Grid.Column="1">
+
+                <Border  Grid.Column="1" 
+                         BorderBrush="#FF5C49E5"
+                         BorderThickness="3"
+                         Margin="0 0 33 0"
+                         Height="100"
+                         Width="100"
+                         HorizontalAlignment="Right">
+                    <Image Source="Assets/Image/LogoPanel.png"
+                           Stretch="Fill"
+                        >
+                    </Image>
+                </Border>
+
+            </StackPanel>
+            
         </Grid>
+
     </Grid>
 </Window>

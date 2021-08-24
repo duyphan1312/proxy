@@ -189,6 +189,7 @@
     <Resource Include="Assets\Image\ProxyIcon.png" />
     <Resource Include="Assets\Image\School.png" />
     <Resource Include="Assets\Image\Home.png" />
+    <Resource Include="Assets\Image\LogoPanel.png" />
     <Content Include="StaticIPList.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
